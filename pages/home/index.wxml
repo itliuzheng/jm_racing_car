@@ -1,0 +1,39 @@
+<!--pages/home/index.wxml-->
+<view class="home">
+  <view class="page-body">
+    <view class="page-section rc_swiper">
+      <swiper indicator-dots="{{true}}"
+      indicator-color="rgba(0,0,0,0.3)"
+      indicator-active-color="#fff"
+        autoplay="{{false}}" interval="3000">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item >  <view class="swiper-item {{item}}"></view></swiper-item>
+         </block>
+       </swiper>
+     </view>
+  
+    <view class="rc_reserve">
+      <view class="rc_reserve_section"></view>
+      <view class="rc_reserve_section"></view>
+     </view>
+   </view>
+
+   <view class="rc_news">
+    <view class="news-title clearfix">
+      <view class="title fl">最新资讯</view>
+      <view class="more fr">more+</view>
+     </view>
+     <view class="news-list-box">
+          <view class="news-list">
+            <view class="new-banner"></view>
+            <text class="new-title">点燃赛场，火热报名中</text>
+            <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
+           </view>
+          <view class="news-list">
+            <view class="new-banner"></view>
+            <text class="new-title">点燃赛场，火热报名中</text>
+            <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
+           </view>
+       </view>
+     </view>
+ </view>

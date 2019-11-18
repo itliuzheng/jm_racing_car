@@ -1,0 +1,61 @@
+/**index.wxss**/
+.myself{
+  min-height: 1334rpx;
+  height: 100%;
+  background: #fafafa;
+}
+.userinfo{
+  width: 100%;
+  height: 350rpx;
+  border-bottom: 2rpx solid #d8dfe7;
+  padding: 87rpx 28rpx 0;
+  background: #fff;
+}
+
+.userinfo-avatar {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  display: inline-block;
+  color: #000;
+  font-size: 24px;
+  line-height: 1;
+  margin-left: 26rpx;
+  vertical-align: top;
+}
+
+.userinfo-nickname .nickname{
+  display: block;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.userinfo-nickname .nickname_desc{
+  display: block;
+  font-size: 11pt;
+  color: #b0b0b0;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.veservation_amount{
+  display: inline-block;
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  height: 48rpx;
+  background: #ffefef;
+  color: #fe5757;
+  line-height: 48rpx;
+  font-size: 11pt;
+}
+
+.my-info{
+  padding: 0 28rpx; 
+}
+
+.my-info .my-info-title{
+  line-height: 1;
+  padding: 44rpx 0;
+}

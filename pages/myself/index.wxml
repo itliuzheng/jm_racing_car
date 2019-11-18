@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="myself">
+  <view class="userinfo">
+   <image class="userinfo-avatar" src="http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqAjVu0j3WjItyfI5xZa0aTy5tnewyfpwHzc7bibLxtzekHiagfocsHYV1QkKmY0sIQlCnIrLd4UIPg/132" mode="cover"></image>
+    <view class="userinfo-nickname">
+      <text class="nickname">hello刘正</text>
+      <text class="nickname_desc">您已在jm128天，感谢您的陪伴</text>
+      <view class="veservation_amount">预约金￥25671.00</view>
+    </view>
+  </view>
+  <view class="my-info">
+    <view class="my-info-title">我的信息</view>
+    <view class="info-list">
+      <mp-cells>
+       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
+        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
+        </mp-cell>
+       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
+        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
+        </mp-cell>
+       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
+        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
+        </mp-cell>
+      </mp-cells>
+     </view>
+
+  </view>
+</view>

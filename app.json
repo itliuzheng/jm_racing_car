@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/match/index",
+    "pages/single/index",
+    "pages/message/index",
+    "pages/myself/index",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "JM赛车",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "selectedColor": "#6d70d3",
+    "backgroundColor": "#ffffff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "selectedIconPath": "/images/tab/discovery-on.png",
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "/images/tab/discovery.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/search-on.png",
+        "pagePath": "pages/message/index",
+        "text": "预约",
+        "iconPath": "/images/tab/search.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/user-on.png",
+        "pagePath": "pages/myself/index",
+        "text": "我的",
+        "iconPath": "/images/tab/user.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
