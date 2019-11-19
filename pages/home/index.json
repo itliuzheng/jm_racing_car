@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "mp-searchbar":"../component/searchbar/searchbar"
   },
-  "navigationBarTitleText": ""
+  "navigationBarTitleText": "JM赛车"
 }

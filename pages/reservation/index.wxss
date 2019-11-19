@@ -1,21 +1,150 @@
 /**index.wxss**/
-.userinfo {
+
+/* .swiper-tab-header{
+  position: relative;
+  height: 98rpx;
+  line-height: 98rpx;
+}
+
+.swiper-tab {
+}
+.swiper-tab:before{
+  content: '';
+  position: absolute;
+  width: 2rpx;
+  height: 24rpx;
+  background: #000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.swiper-tab-item.active text{
+  padding-bottom: 8rpx;
+  border-bottom: 5rpx solid #f85a5e;
+}
+
+.swiper-tab-item {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  font-size: 28rpx;
+} */
+
+
+.stv-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.withAnimate {
+  transition: all 100ms ease;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+.stv-container .tab-bar {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  font-size: 28rpx;
+  height: 98rpx;
+  color: #000;
+}
+.stv-container .tab-bar::before{
+  content: '';
+  position: absolute;
+  width: 1rpx;
+  height: 24rpx;
+  background: #dedede;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+ .stv-container .tab-bar .tab-active text{
+  /* color: #2d80ff; */
+  position: relative;
+} 
+.stv-container .tab-bar .tab-active text::before{
+  content: '';
+  width: 100%;
+  height: 5rpx;
+  background: #f85a5e;
+  position: absolute;
+  bottom: -8rpx;
+  left: 0;
+} 
+
+.stv-container .tab-bar .tab {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding-top: 16rpx;
+  padding-bottom: 20rpx;
+}
+.stv-container .tab-bar .under-line {
+  position: absolute;
+  bottom: 0;
+  height: 6rpx;
+  background-color: #2d80ff;
+}
+.stv-container .scroll-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f5;
+}
+.stv-container .scroll-view .scroll-view-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+}
+.stv-container .scroll-view .scroll-view-wrapper .one-scene {
+  height: 100%;
+}
+.one-scene{
+  padding: 0 28rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.detail-list-box .detail-list{
+  background: #fff;
+  padding: 40rpx 35rpx 34rpx;
+  margin-bottom: 24rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.detail-list .title{
+  font-size: 32rpx;
+  display: inline-block; 
+  line-height: 1.2;
+  margin-bottom: 18rpx;
 }
-
-.usermotto {
-  margin-top: 200px;
+.detail-list .desc{
+  font-size: 22rpx;
+  line-height: 1;
+  margin-bottom: 8rpx;
+  color: #a0a0a0; 
+}
+.detail-list .detail-banner{
+  height: 270rpx;
+  margin-top: 32rpx;
+}
+.button-red{
+  width: 100%;
+  height: 75rpx;
+  border: 1rpx solid #f13e3e;
+  font-size: 32rpx;
+  color: #f13e3e;
+  text-align: center;
+  line-height: 75rpx;
+  margin-top: 22rpx;
 }

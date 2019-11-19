@@ -1,11 +1,62 @@
 <!-- 预约.wxml-->
-<view class="reservation-box">
+<!-- <view class="reservation-box">
 
+  <view class='swiper-tab-header'>
     <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
         <block wx:for="{{tabInfo}}" wx:key="">
             <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
-                {{item}}
+                <text>{{item.name}}</text>
             </view>
         </block>
     </swiper-view>
+  </view>
+</view> -->
+
+<view class="stv-container">
+  <view class="tab-bar">
+    <view wx:for="{{tabs}}" wx:key="unique" data-index=
+    "{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
+      <text>{{item}}</text>
+    </view>
+    <!-- <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view> -->
+  </view>
+  <view class="scroll-view">
+    <view bindtouchstart="handlerStart" catchtouchmove="handlerMove" bindtouchcancel="handlerCancel" bindtouchend="handlerEnd"  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
+      <view style="width: {{stv.windowWidth}}px;" wx:for="{{tabs}}" wx:key="unique" class="one-scene">
+        <scroll-view style="height:100%" scroll-y>
+          <view class='detail-list-box'>
+            <view class="detail-list">
+              <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来</text>
+              <view class='desc clearfix'>
+                <text class='fl'>时间：2019.11.27 15:30</text>
+                <text class='fr'>难度：中等</text>
+              </view>
+              <view class='desc'>
+                <text>车型：保时捷概念跑车</text>
+              </view>
+              <view class="detail-banner">
+                <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image>
+              </view>
+              <view class='button-red'>查看详情</view>
+            </view>
+
+            <view class="detail-list">
+              <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来邀请你来邀请你来</text>
+              <view class='desc clearfix'>
+                <text class='fl'>时间：2019.11.27 15:30</text>
+                <text class='fr'>难度：中等</text>
+              </view>
+              <view class='desc'>
+                <text>车型：保时捷概念跑车</text>
+              </view>
+              <view class="detail-banner">
+                <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image>
+              </view>
+              <view class='button-red'>查看详情</view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
 </view>
