@@ -7,30 +7,41 @@
       indicator-active-color="#fff"
         autoplay="{{false}}" interval="3000">
         <block wx:for="{{background}}" wx:key="*this">
-          <swiper-item >  <view class="swiper-item {{item}}"></view></swiper-item>
+          <swiper-item >  
+            <view class="swiper-item">
+              <cover-image src="../../images/home/JM-home_banner.png"></cover-image>
+            </view>
+          </swiper-item>
          </block>
        </swiper>
      </view>
   
     <view class="rc_reserve">
-      <view class="rc_reserve_section"></view>
-      <view class="rc_reserve_section"></view>
+      <view class="rc_reserve_section">
+        <cover-image src="../../images/home/JM-home_yuyue_01.png"></cover-image>
+      </view>
+      <view class="rc_reserve_section">
+        <cover-image src="../../images/home/JM-home_yuyue_02.png"></cover-image>
+      </view>
      </view>
    </view>
 
    <view class="rc_news">
     <view class="news-title clearfix">
       <view class="title fl">最新资讯</view>
-      <view class="more fr">more+</view>
+      <view class="more fr"><cover-image src="../../images/home/more.png"></cover-image></view>
      </view>
      <view class="news-list-box">
           <view class="news-list">
-            <view class="new-banner"></view>
+            <view class="new-banner">
+              <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image>
+            </view>
             <text class="new-title">点燃赛场，火热报名中</text>
             <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
            </view>
           <view class="news-list">
-            <view class="new-banner"></view>
+            <view class="new-banner">
+              <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image></view>
             <text class="new-title">点燃赛场，火热报名中</text>
             <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
            </view>

@@ -1,12 +1,8 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/match/index",
-    "pages/single/index",
-    "pages/message/index",
-    "pages/myself/index",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/reservation/index",
+    "pages/myself/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,27 +11,27 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar":{
-    "selectedColor": "#6d70d3",
+    "selectedColor": "#606164",
     "backgroundColor": "#ffffff",
-    "color": "#c7c7c7",
+    "color": "#606164",
     "list": [
       {
-        "selectedIconPath": "/images/tab/discovery-on.png",
+        "selectedIconPath": "/images/tab/home-on.png",
         "pagePath": "pages/home/index",
         "text": "首页",
-        "iconPath": "/images/tab/discovery.png"
+        "iconPath": "/images/tab/home.png"
       },
       {
-        "selectedIconPath": "/images/tab/search-on.png",
-        "pagePath": "pages/message/index",
+        "selectedIconPath": "/images/tab/reservation-on.png",
+        "pagePath": "pages/reservation/index",
         "text": "预约",
-        "iconPath": "/images/tab/search.png"
+        "iconPath": "/images/tab/reservation.png"
       },
       {
-        "selectedIconPath": "/images/tab/user-on.png",
+        "selectedIconPath": "/images/tab/myself-on.png",
         "pagePath": "pages/myself/index",
         "text": "我的",
-        "iconPath": "/images/tab/user.png"
+        "iconPath": "/images/tab/myself.png"
       }
     ]
   },

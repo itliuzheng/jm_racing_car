@@ -7,21 +7,27 @@
       <text class="nickname_desc">您已在jm128天，感谢您的陪伴</text>
       <view class="veservation_amount">预约金￥25671.00</view>
     </view>
+      <cover-image class="myself-bg" src="../../images/myself/bg.png"></cover-image>
   </view>
   <view class="my-info">
     <view class="my-info-title">我的信息</view>
     <view class="info-list">
-      <mp-cells>
-       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
-        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
-        </mp-cell>
-       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
-        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
-        </mp-cell>
-       <mp-cell link url="pages/home/index" value="姓名  吴亦凡">
-        <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:75rpx; height: 75rpx;"></image>
-        </mp-cell>
-      </mp-cells>
+      <view class="list-cell">
+        <cover-image class="list-icon fl" src="../../images/myself/list_icon1.png"></cover-image>
+        <text class="fl">姓名  吴亦凡</text>
+      </view>
+      <view class="list-cell">
+        <cover-image class="list-icon fl" src="../../images/myself/list_icon2.png"></cover-image>
+        <text class="fl">年龄   32</text>
+      </view>
+      <view class="list-cell">
+        <cover-image class="list-icon fl" src="../../images/myself/list_icon3.png"></cover-image>
+        <text class="fl">驾龄   10年</text>
+      </view>
+      <view class="list-cell">
+        <cover-image class="list-icon fl" src="../../images/myself/list_icon4.png"></cover-image>
+        <text class="fl">级别   02级</text>
+      </view>
      </view>
 
   </view>

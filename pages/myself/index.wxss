@@ -1,15 +1,15 @@
 /**index.wxss**/
 .myself{
-  min-height: 1334rpx;
   height: 100%;
   background: #fafafa;
 }
 .userinfo{
   width: 100%;
-  height: 350rpx;
+  height: 324rpx;
   border-bottom: 2rpx solid #d8dfe7;
   padding: 87rpx 28rpx 0;
   background: #fff;
+  position: relative;
 }
 
 .userinfo-avatar {
@@ -21,7 +21,7 @@
 .userinfo-nickname {
   display: inline-block;
   color: #000;
-  font-size: 24px;
+  font-size: 46rpx;
   line-height: 1;
   margin-left: 26rpx;
   vertical-align: top;
@@ -29,13 +29,13 @@
 
 .userinfo-nickname .nickname{
   display: block;
-  height: 70rpx;
-  line-height: 70rpx;
+  margin: 13rpx 0 15rpx;
+  line-height: 1;
 }
 .userinfo-nickname .nickname_desc{
   display: block;
-  font-size: 11pt;
-  color: #b0b0b0;
+  font-size: 20rpx;
+  color: #b7b7b7;
   font-weight: normal;
   line-height: 1;
 }
@@ -43,19 +43,61 @@
 .veservation_amount{
   display: inline-block;
   margin-top: 20rpx;
-  padding: 0 20rpx;
+  padding: 0 14rpx 0 20rpx;
   height: 48rpx;
   background: #ffefef;
-  color: #fe5757;
+  color: #fc5d5d;
+  font-weight: bold;
   line-height: 48rpx;
-  font-size: 11pt;
+  font-size: 20rpx;
+}
+
+.myself-bg{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 245rpx;
+  height: 324rpx;
 }
 
 .my-info{
-  padding: 0 28rpx; 
+  padding: 0 28rpx 15rpx; 
 }
 
 .my-info .my-info-title{
   line-height: 1;
   padding: 44rpx 0;
+  font-size: 34rpx;
+  color: #000;
+  font-weight: 500;
+}
+
+.list-cell{
+  height: 141rpx;
+  line-height: 141rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx; 
+  box-shadow: 1rpx 17rpx 20rpx 0px rgba(233, 234, 235, 0.59);
+  padding-left: 32rpx;
+  position: relative;
+}
+.list-cell:before{
+  content: "";
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  width: 11rpx;
+  height: 100%;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATCAYAAACk9eypAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3xpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0ZjU4Y2RhNC1hNGQ0LTQ0YTctYTJhYi0zZGVkOTEzZjYyMTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODczMTdDRDAwQUFEMTFFQTlGRUNFRTBGRDkxQTZGQjQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODczMTdDQ0YwQUFEMTFFQTlGRUNFRTBGRDkxQTZGQjQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDAwNzFCNUE0MEFFQTExQkJGNTlCREZGNUMyNTY1MiIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmQwOTQyY2ViLWIxNmEtMTM0OS05ZWU5LTI4MWYxZGY5MDM4MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgoSPWQAAAEFSURBVHjahJO5CsJAEIbjenQ+gOAD2XghomCjgidY+Qq2YuOBYGFhYVAbC8XzVSzFFxDxAP+BCQzrJi58ZHcyX/bIrM+2bQstBnxga/1pCpQ5cQPGLHoKYTGugpGXpDhhL2I1MHSTSHiCtCbVwcAkKX7eWTqIdw2TpESfpBQ4alJfSkqbkaQkOIlYk0/PbxIcKaFJFdB1E+RMVxFrgaCbQGvugYiILcErYEimtU5AUcTOoGRaEiVPteQdiPMyLTkD9WcgJ2JUXxnw0I81BOZa8pp/5kP/cZS84C85bQWyXDY/pdHhc3caXZC8KdkRomJMeyiAt1t500bb4AYuXGwfrwv0FWAAytMzpWvf93IAAAAASUVORK5CYII=") no-repeat center;
+  background-size: 100% 19rpx;
+}
+.list-cell .list-icon{
+  width: 76rpx;
+  height: 76rpx; 
+  margin-top: 34rpx;
+  margin-right: 33rpx;
+}
+.list-cell text{
+  font-size: 34rpx;
 }

@@ -49,6 +49,13 @@
 					"id": -1,
 					"name": "pages/myself/index",
 					"pathName": "pages/myself/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "预约",
+					"pathName": "pages/reservation/index",
 					"scene": null
 				}
 			]
