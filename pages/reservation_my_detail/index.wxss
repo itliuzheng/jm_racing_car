@@ -1,0 +1,106 @@
+.deatil-info{
+  background: #fff;
+}
+.info-header{
+  padding:66rpx 30rpx 0;
+  margin-bottom: 60rpx;
+}
+.title-left{
+  font-size: 32rpx;
+  color: #aeaeae;
+}
+.title{
+  font-size: 67rpx;
+  color: #000;
+}
+.title-desc{
+  font-size: 22rpx;
+  color: #b7b7b7;
+}
+
+.detail-content{
+  padding: 0 28rpx;
+}
+.detail-content .racing-car-info{
+  margin-top: 66rpx;
+}
+.racing-car-info .row{
+  margin-bottom: 22rpx;
+}
+.row>view{
+  width: 50%;
+  display: inline-block;
+  font-size: 26rpx;
+  color: #000;
+  line-height: 1.2;
+}
+.racing-car-info-grey .row>view{
+  color: #929292;
+}
+.row text{
+  margin-left: 40rpx;
+}
+.row .text-right{
+  padding-left: 74rpx;
+}
+
+.precautions{
+  padding: 70rpx 0 0;
+}
+.precautions-detail{
+  height: 350rpx;
+  background: #2e2c2d;
+  padding: 50rpx 28rpx 0;
+}
+.precautions-detail-grey{
+  background: #afaaad;
+}
+.precautions-desc{
+  position: relative;
+}
+.precautions-desc .desc-text{
+  padding: 0 24rpx 0 154rpx;
+  font-size: 24rpx;
+  color: #fff;
+  margin-top: 46rpx;
+  line-height: 34rpx;
+}
+.precautions-desc .icon-red{
+  position: absolute;
+  width: 102rpx;
+  height: 102rpx;
+  background: #e33333;
+  left: 6rpx;
+  top: 0;
+  z-index: 2;
+  color: #fff;
+  font-size: 21rpx;
+  padding: 15rpx 9rpx 0;
+}
+.precautions-desc .icon-grey{
+  position: absolute;
+  width: 66rpx;
+  height: 66rpx;
+  background: #585858;
+  left: 65rpx;
+  top: 52rpx;
+  z-index: 1;
+}
+.precautions-detail-grey .precautions-desc .icon-grey{
+  background: #c0bdbf;
+}
+
+.precautions-btn{
+  padding: 0 28rpx;
+  position: relative;
+  top: -56rpx;
+  min-height: 150rpx;
+}
+.precautions-btn .btn{
+  width: 100%;
+  height: 115rpx;
+  background: #e33333;
+  color: #fff;
+  text-align: center;
+  line-height: 115rpx;
+}

@@ -1,116 +1,186 @@
 //index.js
 //获取应用实例
-// const app = getApp()
-
-// Page({
-//   data: {
-//     motto: 'Hello World',
-//     tabInfo:[{name:'活动预约'},{name:'我的预约'}],
-//     currentTab:0
-//   },
-//   onLoad: function () {
-//   },
-//   clickTab:function(data){
-//     console.log(data);
-//     this.setData({
-//       currentTab:data.currentTarget.dataset.current
-//     })
-//   }
-// })
+const app = getApp()
 
 Page({
   data: {
-    tabs: ['活动预约', '我的预约'],
-    stv: {
-      windowWidth: 0,
-      lineWidth: 0,
-      offset: 0,
-      tStart: false
-    },
-    activeTab: 0
+    tabInfo: ['活动预约', '我的预约'],
+    currentTab:0,
+    array: ['美国', '中国', '巴西', '日本'],
+    weekArray: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    place_index:null,
+    time_index:0,
+    time_now_index:3,
+    activeTab: 0,
+    isAll: false,
+    swiperHeight: 1200,
+    swiperPhotoHeight:1200,
+    loading: false,
   },
   onLoad: function (options) {
-    try {
-      let { tabs } = this.data;
-      var res = wx.getSystemInfoSync()
-      this.windowWidth = res.windowWidth;
-      this.data.stv.lineWidth = this.windowWidth / this.data.tabs.length;
-      this.data.stv.windowWidth = res.windowWidth;
-      this.setData({ stv: this.data.stv })
-      this.tabsCount = tabs.length;
-    } catch (e) {
-    }
+    this.getTopicInfoFromSever();
   },
   handlerStart(e) {
-    let { clientX, clientY } = e.touches[0];
-    this.startX = clientX;
-    this.tapStartX = clientX;
-    this.tapStartY = clientY;
-    this.data.stv.tStart = true;
-    this.tapStartTime = e.timeStamp;
-    this.setData({ stv: this.data.stv })
   },
   handlerMove(e) {
-    let { clientX, clientY } = e.touches[0];
-    let { stv } = this.data;
-    let offsetX = this.startX - clientX;
-    this.startX = clientX;
-    stv.offset += offsetX;
-    if (stv.offset <= 0) {
-      stv.offset = 0;
-    } else if (stv.offset >= stv.windowWidth * (this.tabsCount - 1)) {
-      stv.offset = stv.windowWidth * (this.tabsCount - 1);
-    }
-    this.setData({ stv: stv });
   },
   handlerCancel(e) {
 
   },
   handlerEnd(e) {
-    let { clientX, clientY } = e.changedTouches[0];
-    let endTime = e.timeStamp;
-    let { tabs, stv, activeTab } = this.data;
-    let { offset, windowWidth } = stv;
-    //快速滑动
-    if (endTime - this.tapStartTime <= 300) {
-      //向左
-      if (Math.abs(this.tapStartY - clientY) < 50) {
-        if (this.tapStartX - clientX > 5) {
-          if (activeTab < this.tabsCount - 1) {
-            this.setData({ activeTab: ++activeTab })
-          }
-        } else {
-          if (activeTab > 0) {
-            this.setData({ activeTab: --activeTab })
-          }
-        }
-        stv.offset = stv.windowWidth * activeTab;
-      } else {
-        //快速滑动 但是Y距离大于50 所以用户是左右滚动
-        let page = Math.round(offset / windowWidth);
-        if (activeTab != page) {
-          this.setData({ activeTab: page })
-        }
-        stv.offset = stv.windowWidth * page;
-      }
-    } else {
-      let page = Math.round(offset / windowWidth);
-      if (activeTab != page) {
-        this.setData({ activeTab: page })
-      }
-      stv.offset = stv.windowWidth * page;
+  },
+  getTopicInfoFromSever() {
+    let that = this;
+    if (this.isLocked()) {
+      return
     }
-    stv.tStart = false;
-    this.setData({ stv: this.data.stv })
+    if (!this.data.isAll) {
+      this.locked();
+      this.getSwiperHeight();
+      // Topic.getTopicInfo(this.data.pageIndex, 12).then(res => {
+      //   if (res.data.length > 0) {
+      //     this.data.topicInfo.push.apply(this.data.topicInfo, res.data);
+      //     this.setData({
+      //       topicInfo: this.data.topicInfo
+      //     })
+      //     // storage.put('topic', this.data.topicInfo, 600)
+      //   } else {
+      //     this.setData({
+      //       isAll: true
+      //     })
+      //     this.data.isAll = true;
+      //     this.data.pageIndex = 0;
+      //     // storage.put('topicNum', this.data.topicInfo.length, 600);
+      //   }
+      //   this.unLocked();
+      //   this.data.pageIndex++;
+      //   this.getSwiperHeight();
+
+      // })
+
+      setTimeout(function(){
+        that.unLocked();
+        that.getSwiperHeight();
+      },1000)
+    }
   },
-  _updateSelectedPage(page) {
-    let { tabs, stv, activeTab } = this.data;
-    activeTab = page;
-    this.setData({ activeTab: activeTab })
-    stv.offset = stv.windowWidth * activeTab;
-    this.setData({ stv: this.data.stv })
+  getRecommendPhoto() {
+    let that = this;
+    if (this.isLocked()) {
+      return
+    }
+    if (!this.data.isAll) {
+      this.locked();
+      this.getSwiperPhotoHeight();
+      // Article.getRecommendPhoto(this.data.pageIndex, 12).then(res => {
+      //   if (res.data.length > 0) {
+      //     this.data.photoList.push.apply(this.data.photoList, res.data);
+      //     this.setData({
+      //       photoList: this.data.photoList
+      //     })
+      //     // storage.put('topic', this.data.topicInfo, 600)
+      //   } else {
+      //     this.setData({
+      //       isAll: true
+      //     })
+      //     this.data.isAll = true;
+      //     this.data.pageIndex = 0;
+      //     // storage.put('topicNum', this.data.topicInfo.length, 600);
+      //   }
+      //   this.unLocked();
+      //   this.data.pageIndex++;
+      //   this.getSwiperPhotoHeight();
+
+      // })
+      setTimeout(function () {
+        that.unLocked();
+        that.getSwiperPhotoHeight();
+      }, 1000)
+    }
   },
-  handlerTabTap(e) {
-    this._updateSelectedPage(e.currentTarget.dataset.index);
-  }
+  clickTab: function (e) {
+    console.log('tag',e);
+    if (this.data.currentTab === e.currentTarget.dataset.current) {
+      return false;
+    } else {
+      this.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+  swiperTab: function (event) {
+    let currentTab = event.detail.current;
+    this.setData({
+      currentTab: currentTab,
+    });
+    if (currentTab == 0) {
+      // 调接口
+      this.getTopicInfoFromSever();
+    } else if (currentTab == 1) {
+      this.getRecommendPhoto();
+    } 
+  },
+
+
+  getSwiperHeight() {
+    const query = wx.createSelectorQuery();
+    query.select('.stv-container').boundingClientRect();
+    query.selectViewport().scrollOffset();
+
+    query.exec(res => {
+      console.log('info----',res);
+      this.setData({
+        swiperHeight: res[0].height
+      })
+    })
+  },
+  getSwiperPhotoHeight() {
+    const query = wx.createSelectorQuery()
+    query.select('.item-container-myactivity').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(res => {
+      this.setData({
+        swiperPhotoHeight: res[0].height
+      })
+    })
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e)
+    this.setData({
+      place_index: e.detail.value
+    })
+  },
+  selectTime: function (e) {
+    console.log('time', e, this.data.time_index);
+    this.setData({
+      time_index: e.currentTarget.dataset.index
+    })
+  },
+  goDetail:function(){
+    wx.navigateTo({
+      url: '../reservation_detail/index'
+    })
+  },
+  goMyDetail: function () {
+    wx.navigateTo({
+      url: '../reservation_my_detail/index'
+    })
+  },
+  isLocked() {
+    return this.data.loading ? true : false;
+  },
+
+  locked() {
+    this.data.loading = true;
+    this.setData({
+      loading: true
+    })
+  },
+
+  unLocked() {
+    this.data.loading = false;
+    this.setData({
+      loading: false
+    })
+  },
 })

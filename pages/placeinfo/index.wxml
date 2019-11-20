@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="place-info">
+  <view class="info-header">
+    <view class="title-left">「最新赛场」</view>
+    <view class="title">国际赛车场主赛道</view>
+    <view class="title-desc">最新最热的保时捷概念赛车邀请你火热试驾</view>
+  </view>
+
+  <view class="article-box">
+    <import src="../../wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>

@@ -61,5 +61,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  goActivity: function () {
+    wx.navigateTo({
+      url: '../reservation/index'
+    })
+  },
+  goPlace:function(){
+    wx.navigateTo({
+      url: '../placeinfo/index'
+    })
   }
 })

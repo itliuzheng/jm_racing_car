@@ -2,6 +2,9 @@
   "pages": [
     "pages/home/index",
     "pages/reservation/index",
+    "pages/reservation_detail/index",
+    "pages/reservation_my_detail/index",
+    "pages/placeinfo/index",
     "pages/myself/index"
   ],
   "window": {

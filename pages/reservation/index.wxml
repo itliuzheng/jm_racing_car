@@ -1,31 +1,38 @@
-<!-- 预约.wxml-->
-<!-- <view class="reservation-box">
-
-  <view class='swiper-tab-header'>
-    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
-        <block wx:for="{{tabInfo}}" wx:key="">
-            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
-                <text>{{item.name}}</text>
-            </view>
-        </block>
-    </swiper-view>
-  </view>
-</view> -->
-
 <view class="stv-container">
-  <view class="tab-bar">
-    <view wx:for="{{tabs}}" wx:key="unique" data-index=
-    "{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
-      <text>{{item}}</text>
-    </view>
-    <!-- <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view> -->
-  </view>
-  <view class="scroll-view">
-    <view bindtouchstart="handlerStart" catchtouchmove="handlerMove" bindtouchcancel="handlerCancel" bindtouchend="handlerEnd"  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
-      <view style="width: {{stv.windowWidth}}px;" wx:for="{{tabs}}" wx:key="unique" class="one-scene">
-        <scroll-view style="height:100%" scroll-y>
+  <swiper-view class="tab-bar" scroll-with-animation="true" scroll-x="true">
+    <block wx:for="{{tabInfo}}" wx:key="unique">
+      <view bindtap="clickTab" class="tab {{currentTab==index?'tab-active':''}}" data-current="{{index}}">
+        <text data-current="{{index}}">{{item}}</text>
+      </view>
+    </block>
+  </swiper-view>
+
+  <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" 
+    style="height: {{swiperHeight}}px;">
+  <!-- style="height:{{currentTab == 0 ? swiperHeight : swiperPhotoHeight}}px" -->
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;">
+        
+        <view class="item-container one-scene">
+          <view class="select-header">
+            <view class="select-place">
+              <picker bindchange="bindPickerChange" value="{{place_index}}" range="{{array}}">
+                <view class="picker">
+                  <text wx:if="{{!place_index}}" style="color:#a3a2a2">选择你想要的场地</text>
+                  <text wx:else>{{array[place_index]}}</text>
+                </view>
+              </picker>
+            </view>
+            <view class="select-time">
+              <view bindtap="selectTime" data-index="{{index}}" wx:for="1234567" wx:key="unique" class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
+                <view class="month">January</view>
+                <view class="week">{{weekArray[index]}}</view>
+                <view class="day">22</view>
+              </view>
+            </view>
+          </view>
           <view class='detail-list-box'>
-            <view class="detail-list">
+            <view class="detail-list" wx:for="123123" wx:key="unique">
               <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来</text>
               <view class='desc clearfix'>
                 <text class='fl'>时间：2019.11.27 15:30</text>
@@ -35,28 +42,41 @@
                 <text>车型：保时捷概念跑车</text>
               </view>
               <view class="detail-banner">
-                <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image>
+                <image src="../../images/home/JM-home_banner_new_01.png"></image>
               </view>
-              <view class='button-red'>查看详情</view>
+              <view class='button-red' bindtap="goDetail"><text>查看详情</text></view>
             </view>
-
-            <view class="detail-list">
-              <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来邀请你来邀请你来</text>
-              <view class='desc clearfix'>
-                <text class='fl'>时间：2019.11.27 15:30</text>
-                <text class='fr'>难度：中等</text>
-              </view>
-              <view class='desc'>
-                <text>车型：保时捷概念跑车</text>
-              </view>
-              <view class="detail-banner">
-                <cover-image src="../../images/home/JM-home_banner_new_01.png"></cover-image>
-              </view>
-              <view class='button-red'>查看详情</view>
-            </view>
+            <v-loading class="loading" wx:if="{{loading}}" />
           </view>
-        </scroll-view>
-      </view>
-    </view>
-  </view>
+
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+    
+      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;">
+        <view class="item-container-myactivity one-scene">
+          <view class='detail-list-box'>
+            <block wx:for="123123" wx:key="unique">
+              <view class="my-activity-time">2020年1月1日 上午10点</view>
+              <view class="detail-list" >
+                <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来</text>
+                <view class='desc clearfix'>
+                  <text class='fl'>时间：2019.11.27 15:30</text>
+                  <text class='fr'>难度：中等</text>
+                </view>
+                <view class='desc'>
+                  <text>车型：保时捷概念跑车</text>
+                </view>
+                <view class="detail-banner">
+                  <image src="../../images/home/JM-home_banner_new_01.png"></image>
+                </view>
+                <view class='button-red' bindtap="goMyDetail">查看详情</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
 </view>

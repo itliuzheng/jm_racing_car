@@ -2,11 +2,11 @@
 <view class="home">
   <view class="page-body">
     <view class="page-section rc_swiper">
-      <swiper indicator-dots="{{true}}" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#fff" autoplay="{{false}}" interval="3000">
-        <block wx:for="{{background}}" wx:key="*this">
+      <swiper style="height:258rpx;" indicator-dots="{{true}}" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#fff" autoplay="{{false}}" interval="3000">
+        <block wx:for="{{background}}" wx:key="unique">
           <swiper-item>
             <view class="swiper-item">
-              <cover-image src="../../images/home/JM-home_banner.png"></cover-image>
+              <image src="../../images/home/JM-home_banner.png"></image>
             </view>
           </swiper-item>
         </block>
@@ -14,12 +14,15 @@
     </view>
 
     <view class="rc_reserve">
-      <view class="rc_reserve_section">
+      <navigator open-type="switchTab"  url="/pages/reservation/index" class="rc_reserve_section">
         <cover-image src="../../images/home/JM-home_yuyue_01.png"></cover-image>
-      </view>
-      <view class="rc_reserve_section">
+      </navigator>
+      <navigator url="/pages/placeinfo/index" class="rc_reserve_section">
         <cover-image src="../../images/home/JM-home_yuyue_02.png"></cover-image>
-      </view>
+      </navigator>
+      <!-- <view class="rc_reserve_section" bindtap="goPlace">
+        <cover-image src="../../images/home/JM-home_yuyue_02.png"></cover-image>
+      </view> -->
     </view>
   </view>
 

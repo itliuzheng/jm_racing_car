@@ -10,6 +10,14 @@
 .rc_swiper swiper{
   height: 258rpx;
 }
+.swiper-item{
+  width: 100%;
+  height: 258rpx;
+}
+.swiper-item image{
+  height: 100%;
+  width: 100%;
+}
 
 .rc_reserve{
   display: flex;
