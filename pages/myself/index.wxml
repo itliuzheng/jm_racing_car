@@ -1,34 +1,38 @@
 <!--index.wxml-->
-<view class="myself">
-  <view class="userinfo">
-   <image class="userinfo-avatar" src="http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqAjVu0j3WjItyfI5xZa0aTy5tnewyfpwHzc7bibLxtzekHiagfocsHYV1QkKmY0sIQlCnIrLd4UIPg/132" mode="cover"></image>
-    <view class="userinfo-nickname">
-      <text class="nickname">hello刘正</text>
-      <text class="nickname_desc">您已在jm128天，感谢您的陪伴</text>
-      <view class="veservation_amount">预约金￥25671.00</view>
+<view class="myself" >
+  <view class="userinfo" wx:if="{{hasUserInfo}}">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="userinfo-nickname" >
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <text class="nickname_desc">您已在xxx天，感谢您的陪伴</text>
+      <view class="veservation_amount">预约金￥xxx</view>
     </view>
-      <cover-image class="myself-bg" src="../../images/myself/bg.png"></cover-image>
+    <image class="myself-bg" src="../../images/myself/bg.png"></image>
   </view>
-  <view class="my-info">
+  <view class="userinfo" wx:else style="text-align:center">
+    <navigator url="/pages/home/index" open-type="switchTab" hover-class="other-navigator-hover">请先登录</navigator>
+  </view>
+
+  <view class="my-info"  wx:if="{{hasUserInfo}}">
     <view class="my-info-title">我的信息</view>
     <view class="info-list">
       <view class="list-cell">
-        <cover-image class="list-icon fl" src="../../images/myself/list_icon1.png"></cover-image>
-        <text class="fl">姓名  吴亦凡</text>
+        <image class="list-icon fl" src="../../images/myself/list_icon1.png"></image>
+        <text class="fl">姓名  {{userInfo.nickName}}</text>
       </view>
       <view class="list-cell">
-        <cover-image class="list-icon fl" src="../../images/myself/list_icon2.png"></cover-image>
-        <text class="fl">年龄   32</text>
+        <image class="list-icon fl" src="../../images/myself/list_icon2.png"></image>
+        <text class="fl">年龄   </text>
       </view>
       <view class="list-cell">
-        <cover-image class="list-icon fl" src="../../images/myself/list_icon3.png"></cover-image>
-        <text class="fl">驾龄   10年</text>
+        <image class="list-icon fl" src="../../images/myself/list_icon3.png"></image>
+        <text class="fl">驾龄   </text>
       </view>
       <view class="list-cell">
-        <cover-image class="list-icon fl" src="../../images/myself/list_icon4.png"></cover-image>
-        <text class="fl">级别   02级</text>
+        <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
+        <text class="fl">级别   </text>
       </view>
-     </view>
+    </view>
 
   </view>
 </view>
