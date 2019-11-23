@@ -1,4 +1,5 @@
 //index.js
+const config = require('../../utils/config.js');
 //获取应用实例
 const app = getApp()
 
@@ -6,11 +7,59 @@ Page({
   data: {
     tabInfo: ['活动预约', '我的预约'],
     currentTab:0,
-    array: ['美国', '中国', '巴西', '日本'],
-    weekArray: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    areas: ["北京", "天津", "石家庄", "杭州", "上海"],
+    dateList: [
+      {
+        "date": "2019-11-21",
+        "day": 21,
+        "month": "November",
+        "week": "周四"
+      },
+      {
+        "date": "2019-11-22",
+        "day": 22,
+        "month": "November",
+        "week": "周五"
+      },
+      {
+        "date": "2019-11-23",
+        "day": 23,
+        "month": "November",
+        "week": "周六"
+      },
+      {
+        "date": "2019-11-24",
+        "day": 24,
+        "month": "November",
+        "week": "周日"
+      },
+      {
+        "date": "2019-11-25",
+        "day": 25,
+        "month": "November",
+        "week": "周一"
+      },
+      {
+        "date": "2019-11-26",
+        "day": 26,
+        "month": "November",
+        "week": "周二"
+      },
+      {
+        "date": "2019-11-27",
+        "day": 27,
+        "month": "November",
+        "week": "周三"
+      }],
+    activitys: {
+      "current": 1,
+      "data": [ ],
+      "pageSize": 10,
+      "pages": 1,
+      "total": 1},
     place_index:null,
-    time_index:0,
-    time_now_index:3,
+    time_index:null,
+    time_now_index:0,
     activeTab: 0,
     isAll: false,
     swiperHeight: 1200,
@@ -18,7 +67,7 @@ Page({
     loading: false,
   },
   onLoad: function (options) {
-    this.getTopicInfoFromSever();
+    this.getActivity();
   },
   handlerStart(e) {
   },
@@ -29,40 +78,68 @@ Page({
   },
   handlerEnd(e) {
   },
-  getTopicInfoFromSever() {
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log('onReachBottom----');
+  },
+  onPullDownRefresh() {
+    wx.showNavigationBarLoading();
+
+    if (this.data.currentTab == 0){
+      this.getActivity();
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    }else{
+
+    }
+
+  },
+  getActivity(page = 1) {
     let that = this;
     if (this.isLocked()) {
       return
     }
-    if (!this.data.isAll) {
-      this.locked();
+
+    this.locked();
+    this.getSwiperHeight();
+    wx.showLoading({
+      title: '数据加载中...',
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
+    config.ajax('POST', {
+      site: that.data.place_index != null ? that.data.areas[that.data.place_index] : '',
+      startDate: that.data.time_index != null ? that.data.dateList[that.data.time_index].date : '',
+      pageNum: page
+
+    }, config.activity, (resp) => { }, (res) => { }, (resp) => {
+      console.log('then-----', res);
+      wx.hideLoading();
+      let res = resp.data;
+      if (page != 1) {
+        this.data.activitys.data.push.apply(this.data.activitys.data, res.data.activitys.data);
+        that.setData({
+          activitys: that.data.activitys,
+          areas: res.data.areas,
+          dateList: res.data.dateList,
+        })
+      } else {
+        that.setData({
+          activitys: res.data.activitys,
+          areas: res.data.areas,
+          dateList: res.data.dateList,
+        })
+        
+      }
+
+      this.unLocked();
       this.getSwiperHeight();
-      // Topic.getTopicInfo(this.data.pageIndex, 12).then(res => {
-      //   if (res.data.length > 0) {
-      //     this.data.topicInfo.push.apply(this.data.topicInfo, res.data);
-      //     this.setData({
-      //       topicInfo: this.data.topicInfo
-      //     })
-      //     // storage.put('topic', this.data.topicInfo, 600)
-      //   } else {
-      //     this.setData({
-      //       isAll: true
-      //     })
-      //     this.data.isAll = true;
-      //     this.data.pageIndex = 0;
-      //     // storage.put('topicNum', this.data.topicInfo.length, 600);
-      //   }
-      //   this.unLocked();
-      //   this.data.pageIndex++;
-      //   this.getSwiperHeight();
-
-      // })
-
-      setTimeout(function(){
-        that.unLocked();
-        that.getSwiperHeight();
-      },1000)
-    }
+    })
   },
   getRecommendPhoto() {
     let that = this;
@@ -115,7 +192,7 @@ Page({
     });
     if (currentTab == 0) {
       // 调接口
-      this.getTopicInfoFromSever();
+      this.getActivity();
     } else if (currentTab == 1) {
       this.getRecommendPhoto();
     } 
@@ -149,12 +226,15 @@ Page({
     this.setData({
       place_index: e.detail.value
     })
+    this.getActivity();
+
   },
   selectTime: function (e) {
     console.log('time', e, this.data.time_index);
     this.setData({
       time_index: e.currentTarget.dataset.index
     })
+    this.getActivity();
   },
   goDetail:function(){
     wx.navigateTo({

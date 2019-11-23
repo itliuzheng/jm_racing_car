@@ -16,36 +16,41 @@
         <view class="item-container one-scene">
           <view class="select-header">
             <view class="select-place">
-              <picker bindchange="bindPickerChange" value="{{place_index}}" range="{{array}}">
+              <picker bindchange="bindPickerChange" value="{{place_index}}" range="{{areas}}">
                 <view class="picker">
                   <text wx:if="{{!place_index}}" style="color:#a3a2a2">选择你想要的场地</text>
-                  <text wx:else>{{array[place_index]}}</text>
+                  <text wx:else>{{areas[place_index]}}</text>
                 </view>
               </picker>
             </view>
             <view class="select-time">
-              <view bindtap="selectTime" data-index="{{index}}" wx:for="1234567" wx:key="unique" class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
-                <view class="month">January</view>
-                <view class="week">{{weekArray[index]}}</view>
-                <view class="day">22</view>
+              <view bindtap="selectTime" data-index="{{index}}" wx:for="{{dateList}}" wx:key="unique" class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
+                <view class="month">{{item.month}}</view>
+                <view class="week">{{item.week}}</view>
+                <view class="day">{{item.day}}</view>
               </view>
             </view>
           </view>
           <view class='detail-list-box'>
-            <view class="detail-list" wx:for="123123" wx:key="unique">
-              <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来</text>
+            <view class="detail-list" wx:for="{{activitys.data}}" wx:key="unique">
+              <text class="title">{{item.title}}</text>
               <view class='desc clearfix'>
-                <text class='fl'>时间：2019.11.27 15:30</text>
-                <text class='fr'>难度：中等</text>
+                <text class='fl'>时间：{{item.startDate}}</text>
+                <text class='fr'>难度：{{item.difficulty}}</text>
               </view>
               <view class='desc'>
-                <text>车型：保时捷概念跑车</text>
+                <text>车型：{{item.carType}}</text>
               </view>
               <view class="detail-banner">
                 <image src="../../images/home/JM-home_banner_new_01.png"></image>
               </view>
               <view class='button-red' bindtap="goDetail"><text>查看详情</text></view>
             </view>
+
+            <view wx:if="{{activitys.data.length <= 0}}" style="text-align:center">
+              <text >暂无数据</text>
+            </view>
+
             <v-loading class="loading" wx:if="{{loading}}" />
           </view>
 
@@ -80,3 +85,4 @@
     </swiper-item>
   </swiper>
 </view>
+

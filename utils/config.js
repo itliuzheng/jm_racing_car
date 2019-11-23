@@ -4,7 +4,9 @@ const getUid = '/wx/user/login',
   https = "http://192.168.11.121:8008",
 
   //存微信头像
-  saveInfo = '/wx/user/saveInfo'
+  saveInfo = '/wx/user/saveInfo',
+  //活动预约
+  activity = '/activity/activity/page'
   
 /**
  * 封装本地存储
@@ -198,5 +200,6 @@ module.exports = {
   getUid: getUid,
   getuid: getuid,
   mytoast: mytoast,
-  saveInfo: saveInfo
+  saveInfo: saveInfo,
+  activity: activity
 } 

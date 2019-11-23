@@ -8,7 +8,7 @@
     "pages/myself/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "JM赛车",
     "navigationBarTextStyle": "black"

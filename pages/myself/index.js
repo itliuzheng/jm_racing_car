@@ -1,4 +1,5 @@
 //index.js
+const config = require('../../utils/config.js');
 //获取应用实例
 const app = getApp()
 
