@@ -56,7 +56,15 @@ Page({
       "data": [ ],
       "pageSize": 10,
       "pages": 1,
-      "total": 1},
+      "total": 1
+    },
+    my_activitys: {
+      "current": 1,
+      "data": [],
+      "pageSize": 10,
+      "pages": 1,
+      "total": 1
+    },
     place_index:null,
     time_index:null,
     time_now_index:0,
@@ -79,22 +87,46 @@ Page({
   handlerEnd(e) {
   },
   /**
-   * 页面上拉触底事件的处理函数
+   * 页面下拉刷新
    */
-  onReachBottom: function () {
-    console.log('onReachBottom----');
-  },
   onPullDownRefresh() {
     wx.showNavigationBarLoading();
+    
+    this.setData({
+      place_index: null,
+      time_index: null,
+    })
 
     if (this.data.currentTab == 0){
       this.getActivity();
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     }else{
+      this.getMyActivity();
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
 
     }
 
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  scrollBottomTab(e){
+    console.log('scrollBottomTab1----',e);
+
+    if (this.data.currentTab == 0) {
+      if (this.data.activitys.current < this.data.activitys.pages) {
+        let page = this.data.activitys.current + 1;
+        this.getActivity(page);
+      }
+    } else {
+      if (this.data.my_activitys.current < this.data.my_activitys.pages) {
+        let page = this.data.my_activitys.current + 1;
+        this.getMyActivity(page);
+      }
+
+    }
   },
   getActivity(page = 1) {
     let that = this;
@@ -112,17 +144,19 @@ Page({
       complete: function (res) { },
     })
 
+    console.log('page==',page);
+
     config.ajax('POST', {
       site: that.data.place_index != null ? that.data.areas[that.data.place_index] : '',
       startDate: that.data.time_index != null ? that.data.dateList[that.data.time_index].date : '',
       pageNum: page
-
     }, config.activity, (resp) => { }, (res) => { }, (resp) => {
-      console.log('then-----', res);
       wx.hideLoading();
       let res = resp.data;
       if (page != 1) {
         this.data.activitys.data.push.apply(this.data.activitys.data, res.data.activitys.data);
+        this.data.activitys.current = res.data.activitys.current;
+        
         that.setData({
           activitys: that.data.activitys,
           areas: res.data.areas,
@@ -141,39 +175,49 @@ Page({
       this.getSwiperHeight();
     })
   },
-  getRecommendPhoto() {
-    let that = this;
+  getMyActivity(page = 1) {
+    let _this = this;
     if (this.isLocked()) {
       return
     }
-    if (!this.data.isAll) {
-      this.locked();
-      this.getSwiperPhotoHeight();
-      // Article.getRecommendPhoto(this.data.pageIndex, 12).then(res => {
-      //   if (res.data.length > 0) {
-      //     this.data.photoList.push.apply(this.data.photoList, res.data);
-      //     this.setData({
-      //       photoList: this.data.photoList
-      //     })
-      //     // storage.put('topic', this.data.topicInfo, 600)
-      //   } else {
-      //     this.setData({
-      //       isAll: true
-      //     })
-      //     this.data.isAll = true;
-      //     this.data.pageIndex = 0;
-      //     // storage.put('topicNum', this.data.topicInfo.length, 600);
-      //   }
-      //   this.unLocked();
-      //   this.data.pageIndex++;
-      //   this.getSwiperPhotoHeight();
 
-      // })
-      setTimeout(function () {
-        that.unLocked();
-        that.getSwiperPhotoHeight();
-      }, 1000)
-    }
+    this.locked();
+    this.getSwiperPhotoHeight();
+    wx.showLoading({
+      title: '数据加载中...',
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
+    console.log('page==', page);
+
+    config.ajax('GET', {
+      openId: app.uid,
+      pageNum: page
+    }, config.my_activity, (resp) => { }, (res) => { }, (resp) => {
+
+      console.log('complete');
+
+      wx.hideLoading();
+      let res = resp.data;
+      if (page != 1) {
+        _this.data.my_activitys.data.push.apply(_this.data.my_activitys.data, res.data.activitys.data);
+        _this.data.my_activitys.current = res.data.activitys.current;
+
+        _this.setData({
+          my_activitys: _this.data.my_activitys
+        })
+      } else {
+        _this.setData({
+          my_activitys: res.data.activitys
+        })
+      }
+
+      this.unLocked();
+      this.getSwiperPhotoHeight();
+    })
   },
   clickTab: function (e) {
     console.log('tag',e);
@@ -194,7 +238,7 @@ Page({
       // 调接口
       this.getActivity();
     } else if (currentTab == 1) {
-      this.getRecommendPhoto();
+      this.getMyActivity();
     } 
   },
 
@@ -205,7 +249,6 @@ Page({
     query.selectViewport().scrollOffset();
 
     query.exec(res => {
-      console.log('info----',res);
       this.setData({
         swiperHeight: res[0].height
       })
@@ -230,15 +273,15 @@ Page({
 
   },
   selectTime: function (e) {
-    console.log('time', e, this.data.time_index);
     this.setData({
       time_index: e.currentTarget.dataset.index
     })
     this.getActivity();
   },
-  goDetail:function(){
+  goDetail:function(e){
+    console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
-      url: '../reservation_detail/index'
+      url: `../reservation_detail/index?id=${e.currentTarget.dataset.id}`
     })
   },
   goMyDetail: function () {

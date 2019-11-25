@@ -5,7 +5,9 @@
     "pages/reservation_detail/index",
     "pages/reservation_my_detail/index",
     "pages/placeinfo/index",
-    "pages/myself/index"
+    "pages/myself/index",
+    "pages/login/login",
+    "pages/myself/driver_license/driver_license"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -13,7 +15,7 @@
     "navigationBarTitleText": "JM赛车",
     "navigationBarTextStyle": "black"
   },
-  "tabBar":{
+  "tabBar": {
     "selectedColor": "#606164",
     "backgroundColor": "#ffffff",
     "color": "#606164",

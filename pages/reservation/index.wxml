@@ -11,7 +11,7 @@
     style="height: {{swiperHeight}}px;">
   <!-- style="height:{{currentTab == 0 ? swiperHeight : swiperPhotoHeight}}px" -->
     <swiper-item>
-      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;">
+      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
         
         <view class="item-container one-scene">
           <view class="select-header">
@@ -44,10 +44,10 @@
               <view class="detail-banner">
                 <image src="../../images/home/JM-home_banner_new_01.png"></image>
               </view>
-              <view class='button-red' bindtap="goDetail"><text>查看详情</text></view>
+              <view class='button-red' bindtap="goDetail" data-id="{{item.id}}"><text>查看详情</text></view>
             </view>
 
-            <view wx:if="{{activitys.data.length <= 0}}" style="text-align:center">
+            <view class="no-data" wx:if="{{activitys.data.length <= 0}}" >
               <text >暂无数据</text>
             </view>
 
@@ -59,24 +59,24 @@
     </swiper-item>
     <swiper-item>
     
-      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;">
+      <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
         <view class="item-container-myactivity one-scene">
           <view class='detail-list-box'>
-            <block wx:for="123123" wx:key="unique">
-              <view class="my-activity-time">2020年1月1日 上午10点</view>
+            <block wx:for="{{my_activitys.data}}" wx:key="unique">
+              <view class="my-activity-time">{{item.startDate}}</view>
               <view class="detail-list" >
-                <text class="title">new bee 黄蜂杯热血拉力争霸赛 邀请你来</text>
+                <text class="title">{{item.title}}</text>
                 <view class='desc clearfix'>
-                  <text class='fl'>时间：2019.11.27 15:30</text>
-                  <text class='fr'>难度：中等</text>
+                  <text class='fl'>时间：{{item.startDate}}</text>
+                  <text class='fr'>难度：{{item.difficulty}}</text>
                 </view>
                 <view class='desc'>
-                  <text>车型：保时捷概念跑车</text>
+                  <text>车型：{{item.carType}}</text>
                 </view>
                 <view class="detail-banner">
                   <image src="../../images/home/JM-home_banner_new_01.png"></image>
                 </view>
-                <view class='button-red' bindtap="goMyDetail">查看详情</view>
+                <view class='button-red' bindtap="goDetail"><text>查看详情</text></view>
               </view>
             </block>
           </view>

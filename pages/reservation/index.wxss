@@ -48,6 +48,9 @@
   background: #f0f0f5;
   padding: 0 28rpx 98rpx;
 }
+.swiper{
+   background: #f0f0f5;
+}
 
 /* 选择想要的场地/时间 */
 .select-header .select-place{
@@ -158,4 +161,11 @@
   overflow: hidden;
 }
 
+.no-data{
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  padding: 40rpx 0;
+  color: #666;
+}
 /* end */

@@ -79,10 +79,10 @@
   border-radius: 10rpx;
   margin-bottom: 30rpx; 
   box-shadow: 1rpx 17rpx 20rpx 0px rgba(233, 234, 235, 0.59);
-  padding-left: 32rpx;
+  
   position: relative;
 }
-.list-cell:before{
+.list-cell.list-cell-link:before{
   content: "";
   position: absolute;
   right: 30rpx;
@@ -97,6 +97,7 @@
   height: 76rpx; 
   margin-top: 34rpx;
   margin-right: 33rpx;
+  margin-left: 32rpx;
 }
 .list-cell text{
   font-size: 34rpx;

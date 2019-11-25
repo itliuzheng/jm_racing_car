@@ -98,7 +98,7 @@ Page({
   },
   hideMask(){
     this.setData({
-      hasUserInfo:true
+      hasUserInfo:false
     })
   },
   goActivity: function () {

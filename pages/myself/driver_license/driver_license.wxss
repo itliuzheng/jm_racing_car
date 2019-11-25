@@ -1,0 +1,19 @@
+/* pages/myself/driver_license/driver_license.wxss */
+page{
+  background: #f0f0f0;
+}
+.license-box{
+  padding: 30rpx 30rpx 0;
+}
+
+.upload-form{
+  width: 100%;
+  height: 400rpx;
+  background: #fff;
+  padding: 20rpx;
+}
+.upload-form .upload-photo{
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #ccc;
+}

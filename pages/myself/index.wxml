@@ -24,10 +24,12 @@
         <image class="list-icon fl" src="../../images/myself/list_icon2.png"></image>
         <text class="fl">年龄   </text>
       </view>
-      <view class="list-cell">
-        <image class="list-icon fl" src="../../images/myself/list_icon3.png"></image>
-        <text class="fl">驾龄   </text>
-      </view>
+      <navigator url="/pages/myself/driver_license/driver_license">
+        <view class="list-cell list-cell-link">
+          <image class="list-icon fl" src="../../images/myself/list_icon3.png"></image>
+          <text class="fl">驾龄   </text>
+        </view>
+      </navigator>
       <view class="list-cell">
         <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
         <text class="fl">级别   </text>

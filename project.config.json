@@ -60,9 +60,23 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/reservation_detail/index",
 					"pathName": "pages/reservation_detail/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myself/driver_license/driver_license",
+					"pathName": "pages/myself/driver_license/driver_license",
 					"query": "",
 					"scene": null
 				}

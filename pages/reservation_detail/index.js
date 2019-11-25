@@ -1,4 +1,7 @@
 //index.js
+
+const config = require('../../utils/config.js');
+
 //获取应用实例
 const app = getApp()
 
@@ -9,8 +12,77 @@ Page({
       title:'保时捷赛车试驾',
       desc:'最新最热的保时捷概念赛车邀请你火热试驾'
     },
-    is_my_detail:false
+    info:null,
+    is_my_detail:false,
+    id:null
   },
-  onLoad: function () {
+  onLoad: function (e) {
+    console.log(e);
+    this.getInit(e.id);
+    this.setData({
+      id:e.id
+    });
+
   },
+  onShow(){
+
+  },
+  getInit(id) {
+    let _this = this;
+    wx.showLoading({
+      title: '数据加载中...',
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
+    config.ajax('GET', {}, `/activity/activity/${id}`, (resp) => {
+      wx.hideLoading();
+      let res = resp.data;
+
+      _this.setData({
+        info: res.data
+      })
+
+    }, (error) => { }, (complete) => {
+    })
+  },
+  confirmBtn() {
+    let _this = this;
+    wx.showLoading({
+      title: '数据加载中...',
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
+    config.ajax('POST', {
+      openId:app.uid,
+      activityId:_this.data.id
+    }, config.activity_book, (resp) => {
+      wx.hideLoading();
+      let res = resp.data;
+
+      if(res.code != -1){
+        config.mytoast('预约成功', (res) => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        })
+      }else{
+        config.mytoast(res.msg,(res)=>{
+          console.log('redirectTo');
+          wx.navigateTo({
+            url:'/pages/login/login'
+          })
+        })
+      }
+
+
+    }, (error) => { }, (complete) => {
+    })
+
+  }
 })

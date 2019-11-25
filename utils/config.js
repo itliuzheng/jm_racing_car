@@ -6,7 +6,11 @@ const getUid = '/wx/user/login',
   //存微信头像
   saveInfo = '/wx/user/saveInfo',
   //活动预约
-  activity = '/activity/activity/page'
+  activity = '/activity/activity/page',
+  //我的活动预约
+  my_activity = '/activity/activity/my',
+  // 预约操作
+  activity_book = '/activity/activity/book'
   
 /**
  * 封装本地存储
@@ -126,7 +130,6 @@ function getData(e, name) {
  * 自定义封装支付函数
  */
 function pay(res, successData, errorData) {
-  console.log(res.data.data)
   wx.requestPayment({
     "timeStamp": res.data.data.timeStamp,
     "nonceStr": res.data.data.nonceStr,
@@ -161,7 +164,7 @@ function pay(res, successData, errorData) {
 function ajax(Type, params, url, successData, errorData, completeData) {
   var methonType = "application/json";
   //访问的主域名
-  if (Type === 'PUT') {
+  if (Type === 'GET') {
     var p = Object.keys(params).map(function (key) {
       return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
     }).join("&");
@@ -171,6 +174,7 @@ function ajax(Type, params, url, successData, errorData, completeData) {
   // if (Type == "POST") {
   //   methonType = "application/x-www-form-urlencoded;charset=UTF-8"
   // }
+  
   wx.request({
     url: https + url,
     method: Type,
@@ -201,5 +205,7 @@ module.exports = {
   getuid: getuid,
   mytoast: mytoast,
   saveInfo: saveInfo,
-  activity: activity
+  activity: activity,
+  my_activity: my_activity,
+  activity_book: activity_book
 } 
