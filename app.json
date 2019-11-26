@@ -12,7 +12,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "JM赛车",
+    "navigationBarTitleText": "赛道",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
