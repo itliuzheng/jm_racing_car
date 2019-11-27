@@ -3,8 +3,8 @@
 <view class="deatil-info">
   <view class="info-header">
     <view class="title-left">「{{title.top}}」</view>
-    <view class="title">{{title.title}}</view>
-    <view class="title-desc">{{title.desc}}</view>
+    <view class="title">{{info.title}}</view>
+    <view class="title-desc">{{info.subTitle}}</view>
   </view>
   <view class="detail-content">
     <cover-image src="../../images/reservation/banner-01.png"></cover-image>

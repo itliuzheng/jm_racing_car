@@ -188,15 +188,24 @@ function ajax(Type, params, url, successData, errorData, completeData) {
   //   methonType = "application/x-www-form-urlencoded;charset=UTF-8"
   // }
   
+  let header = {};
+  if(token){
+    header = {
+      'content-type': methonType,
+      'Authorization': token
+    }
+  }else{
+
+    header = {
+      'content-type': methonType
+    }
+  }
   
   
   wx.request({
     url: https + url,
     method: Type,
-    header: {
-      'content-type': methonType,
-      'Authorization': token
-    },
+    header: header,
     data: params,
     success: (res) => {
       successData(res)

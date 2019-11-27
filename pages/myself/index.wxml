@@ -22,7 +22,7 @@
       </view>
       <view class="list-cell">
         <image class="list-icon fl" src="../../images/myself/list_icon2.png"></image>
-        <text class="fl">年龄   </text>
+        <text class="fl">年龄   {{user.age}}</text>
       </view>
       <navigator url="/pages/myself/driver_license/driver_license">
         <view class="list-cell list-cell-link">
