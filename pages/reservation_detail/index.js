@@ -59,7 +59,7 @@ Page({
     })
 
     config.ajax('POST', {
-      openId:app.uid,
+      openId: app.globalData.uid,
       activityId:_this.data.id
     }, config.activity_book, (resp) => {
       wx.hideLoading();

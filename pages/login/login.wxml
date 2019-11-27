@@ -14,12 +14,12 @@
         <view class="login-form">
           <view class="input-cell">
             <image src="/images/login/user.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf"
+            <input class="weui-input" placeholder-style="color:#bbbbcf" name="loginName"
             maxlength="11" placeholder="请输入您的手机号"></input>
           </view>
           <view class="input-cell">
             <image src="/images/login/password.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf"
+            <input class="weui-input" placeholder-style="color:#bbbbcf" name="password"
             password type="text" placeholder="请输入您的账户密码" />
           </view>
           <view class="btn-area">
@@ -29,17 +29,25 @@
       </form>
       <form bindsubmit="formSubmitRegister"  wx:else>
         <view class="login-form">
-          <view class="input-cell">
+          <!-- <view class="input-cell">
             <image src="/images/login/phone.png"></image>
             <input class="weui-input" placeholder-style="color:#bbbbcf" name="phone"
             maxlength="11" placeholder="请输入您的手机号"></input>
-          </view>
+          </view> -->
+          
           <view class="input-cell">
+          
+            <image src="/images/login/code.png"></image>
+            <view class="weui-input fl mock_input" style="width:381rpx;">{{phone}}</view>
+            <!-- <input class="weui-input fl" style="width:381rpx;" placeholder-style="color:#bbbbcf" name="code"maxlength="6" placeholder="请输入您的手机号"></input> -->
+            <button class="code-btn" size="default" style="width:210rpx;"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+          </view>
+          <!-- <view class="input-cell">
             <image src="/images/login/code.png"></image>
             <input class="weui-input fl" style="width:381rpx;" placeholder-style="color:#bbbbcf" name="code"
             maxlength="6" placeholder="请输入验证码"></input>
             <view class="code-btn" bindtap="sendCode">{{sms}}</view>
-          </view>
+          </view> -->
           <view class="input-cell">
             <image src="/images/login/password.png"></image>
             <input class="weui-input" placeholder-style="color:#bbbbcf" name="password"
@@ -47,17 +55,17 @@
           </view>
           <view class="input-cell">
             <image  src="/images/login/password.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="confirmPassword"
+            <input class="weui-input" placeholder-style="color:#bbbbcf" name="passwordAgain"
             password type="text" placeholder="请重复您的账户密码" />
           </view>
           <view class="input-cell">
             <image src="/images/login/user_name.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="username"
+            <input class="weui-input" placeholder-style="color:#bbbbcf" name="realName"
              type="text" placeholder="请输入您的个人姓名" />
           </view>
           <view class="input-cell">
             <image src="/images/login/idCard.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="idcard"
+            <input class="weui-input" placeholder-style="color:#bbbbcf" name="identityNo"
              type="idcard" placeholder="请输入您的身份证号" />
           </view>
           <view class="input-cell">

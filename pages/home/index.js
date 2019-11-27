@@ -9,13 +9,101 @@ Page({
    */
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    hasUserInfo:false
+    news:[],
+    hasUserInfo:false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this;
+    let token = wx.getStorageSync('token') || null;
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+
+      console.log('hasUserInfo-1--', this.data.hasUserInfo);
+
+      console.log('token=1==', token);
+
+      if (!token) {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      }
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+
+        console.log('hasUserInfo-2--', this.data.hasUserInfo);
+
+        console.log('token=2==', token);
+
+        if (this.data.hasUserInfo == false) {
+          wx.navigateTo({
+            url: '/pages/login/toloading/toloading'
+          })
+        }
+        if (!token) {
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        },
+      })
+      console.log('hasUserInfo-3--', this.data.hasUserInfo);
+
+      console.log('token=3==', token);
+
+      if (this.data.hasUserInfo == false) {
+        wx.navigateTo({
+          url: '/pages/login/toloading/toloading'
+        })
+      }
+
+      if (!token) {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      }
+    }
+
+
+    setTimeout(function(){
+      console.log('hasUserInfo-4--', _this.data.hasUserInfo);
+
+      if (_this.data.hasUserInfo == false) {
+        wx.navigateTo({
+          url: '/pages/login/toloading/toloading'
+        })
+      }
+      if (!token) {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      }
+    },2000)
+    
+
   },
 
   /**
@@ -29,37 +117,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        },
-      })
-
-      console.log('error--');
-      this.setData({
-        hasUserInfo: false
-      })
-    }
+    this.getBanner();
+    this.getNews();
   },
 
   /**
@@ -96,11 +155,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  hideMask(){
-    this.setData({
-      hasUserInfo:false
-    })
-  },
   goActivity: function () {
     wx.navigateTo({
       url: '../reservation/index'
@@ -111,45 +165,41 @@ Page({
       url: '../placeinfo/index'
     })
   },
+  getBanner() {
 
-  /**
-   * 保存用户头像
-   */
-  savaUserInfo() {
     config.ajax('POST', {
-      openId: app.globalData.uid,
-      avatarUrl: app.globalData.userInfo.avatarUrl,
-      nickName: app.globalData.userInfo.nickName,
-      gender: app.globalData.userInfo.gender,
-      province: app.globalData.userInfo.province,
-      city: app.globalData.userInfo.city,
-      country: app.globalData.userInfo.country
-    }, config.saveInfo, (res) => {
-      console.log('config.saveInfo---', res);
-      console.log(res.data.msg);
-      if (res.data.msg == "成功") {
+
+    }, config.getBanner, (res) => {
+      console.log(res.data);
+
+      if (res.data.code == 1) {
         this.setData({
-          hasUserInfo: true
-        })
+          background: res.data.data.data
+        });
+      } else {
+        config.mytoast(res.data.msg, (res) => { })
       }
     }, (res) => {
 
     })
   },
-  /**
-   * 获取用户信息
-   */
-  onGotUserInfo(e) {
-    console.log(e.detail.userInfo)
-    app.globalData.userInfo = e.detail.userInfo
-    config.getuid((res) => {
-      console.log('onGotUserInfo---',res);
+  getNews() {
+
+    config.ajax('POST', {
+
+    }, config.getNews, (res) => {
+
       if (res.data.code == 1) {
-        app.globalData.uid = res.data.data
-        this.savaUserInfo()
+        this.setData({
+          news: res.data.data.data
+        });
+        console.log(this.data.news);
       } else {
-        config.mytoast('服务器错误,请稍后再试', (res) => { })
+        config.mytoast(res.data.msg, (res) => { })
       }
-    }, (res) => { })
-  },
+    }, (res) => {
+
+    })
+  }
+
 })

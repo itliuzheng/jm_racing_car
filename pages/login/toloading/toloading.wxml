@@ -1,0 +1,15 @@
+<!--pages/login/login.wxml-->
+<view class="login-bj">
+  <view class="bj"></view>
+  <view class="login-content">
+    <image class="logo" src="/images/login/login_bj.png"></image>
+    <view class="form-box">
+      <view class="btn-area">
+        <button open-type='getUserInfo' bindgetuserinfo="onGotUserInfo" hover-class='none'>开启</button>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>

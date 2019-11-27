@@ -10,7 +10,19 @@ const getUid = '/wx/user/login',
   //我的活动预约
   my_activity = '/activity/activity/my',
   // 预约操作
-  activity_book = '/activity/activity/book'
+  activity_book = '/activity/activity/book',
+
+  //获取微信手机号
+  getWXPhone = '/wx/user/getWXPhone',
+  //用户登录
+  userlogin = '/user/login',
+  //注册
+  register = '/wx/user/register',
+  //获取banner
+  getBanner = '/allocation/banner-config/page',
+  //获取 咨询管理
+  getNews = '/allocation/news/page'
+
   
 /**
  * 封装本地存储
@@ -163,6 +175,7 @@ function pay(res, successData, errorData) {
  */
 function ajax(Type, params, url, successData, errorData, completeData) {
   var methonType = "application/json";
+  var token = wx.getStorageSync('token') || null;
   //访问的主域名
   if (Type === 'GET') {
     var p = Object.keys(params).map(function (key) {
@@ -175,11 +188,14 @@ function ajax(Type, params, url, successData, errorData, completeData) {
   //   methonType = "application/x-www-form-urlencoded;charset=UTF-8"
   // }
   
+  
+  
   wx.request({
     url: https + url,
     method: Type,
     header: {
       'content-type': methonType,
+      'Authorization': token
     },
     data: params,
     success: (res) => {
@@ -207,5 +223,12 @@ module.exports = {
   saveInfo: saveInfo,
   activity: activity,
   my_activity: my_activity,
-  activity_book: activity_book
+  activity_book: activity_book,
+  getWXPhone: getWXPhone,
+  register: register,
+  userlogin: userlogin,
+  setStorage: setStorage,
+  getStorage: getStorage,
+  getBanner: getBanner,
+  getNews: getNews
 } 

@@ -7,7 +7,8 @@
     "pages/placeinfo/index",
     "pages/myself/index",
     "pages/login/login",
-    "pages/myself/driver_license/driver_license"
+    "pages/myself/driver_license/driver_license",
+    "pages/login/toloading/toloading"
   ],
   "window": {
     "backgroundTextStyle": "dark",

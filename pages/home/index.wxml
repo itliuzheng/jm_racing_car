@@ -7,6 +7,7 @@
           <swiper-item>
             <view class="swiper-item">
               <image src="../../images/home/JM-home_banner.png" mode="aspectFill"></image>
+              <!-- <image src="{{item.targetUrl}}" mode="aspectFill"></image> -->
             </view>
           </swiper-item>
         </block>
@@ -34,28 +35,14 @@
       </view>
     </view>
     <view class="news-list-box">
-      <view class="news-list">
+      <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow}}">
         <view class="new-banner">
-          <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image>
+          <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
+          <image src="{{item.imgUrl}}" mode="aspectFill"></image>
         </view>
-        <text class="new-title">点燃赛场，火热报名中</text>
-        <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
-      </view>
-      <view class="news-list">
-        <view class="new-banner">
-          <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image>
-        </view>
-        <text class="new-title">点燃赛场，火热报名中</text>
-        <text class="new-desc">本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，本月25日将于全市举办llllll火风暴杯热血拉力争霸赛，</text>
+        <text class="new-title">{{item.title}}</text>
+        <text class="new-desc">{{item.digest}}</text>
       </view>
     </view>
-  </view>
-</view>
-
-<view class='maskCode' wx:if="{{!hasUserInfo}}">
-  <view class='toast_centerCode'>
-    <text class='iconfont icon-quxiao1' bindtap='hideMask'>x</text>
-    <button open-type='getUserInfo' class='start_btn' lang="zh_CN" 
-    bindgetuserinfo="onGotUserInfo" hover-class='none'>授权登录</button>
   </view>
 </view>

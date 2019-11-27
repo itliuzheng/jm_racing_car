@@ -76,7 +76,7 @@
                 <view class="detail-banner">
                   <image src="../../images/home/JM-home_banner_new_01.png"></image>
                 </view>
-                <view class='button-red' bindtap="goDetail"><text>查看详情</text></view>
+                <view class='button-red' bindtap="goMyDetail" data-id="{{item.id}}"><text>查看详情</text></view>
               </view>
             </block>
           </view>

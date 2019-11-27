@@ -7,6 +7,7 @@ App({
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
+    var token = wx.getStorageSync('token') || []
 
     // 登录
     config.getuid((res) => {

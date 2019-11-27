@@ -194,24 +194,22 @@ Page({
     console.log('page==', page);
 
     config.ajax('GET', {
-      openId: app.uid,
+      openId: app.globalData.uid,
       pageNum: page
     }, config.my_activity, (resp) => { }, (res) => { }, (resp) => {
-
-      console.log('complete');
-
       wx.hideLoading();
       let res = resp.data;
       if (page != 1) {
-        _this.data.my_activitys.data.push.apply(_this.data.my_activitys.data, res.data.activitys.data);
-        _this.data.my_activitys.current = res.data.activitys.current;
+        _this.data.my_activitys.data.push.apply(_this.data.my_activitys.data, res.data.data);
+        _this.data.my_activitys.current = res.data.current;
 
         _this.setData({
           my_activitys: _this.data.my_activitys
         })
       } else {
+        console.log(res.data);
         _this.setData({
-          my_activitys: res.data.activitys
+          my_activitys: res.data
         })
       }
 
@@ -284,9 +282,9 @@ Page({
       url: `../reservation_detail/index?id=${e.currentTarget.dataset.id}`
     })
   },
-  goMyDetail: function () {
+  goMyDetail: function (e) {
     wx.navigateTo({
-      url: '../reservation_my_detail/index'
+      url: `../reservation_my_detail/index?id=${e.currentTarget.dataset.id}`
     })
   },
   isLocked() {
