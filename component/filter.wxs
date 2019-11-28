@@ -30,7 +30,9 @@ var formatDate = function (timestamp, option) {
 }
 
 var formatDateStr = function(str){
-  return str.substring(0, 10)
+  if (str) {
+    return str.substring(0, 10)
+  }
 }
 
 module.exports = {
