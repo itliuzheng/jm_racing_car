@@ -42,7 +42,8 @@
                 <text>车型：{{item.carType}}</text>
               </view>
               <view class="detail-banner">
-                <image src="../../images/home/JM-home_banner_new_01.png"></image>
+                <!-- <image src="../../images/home/JM-home_banner_new_01.png"></image> -->
+                <image src="{{item.imgUrl}}" mode="aspectFill"></image>
               </view>
               <view class='button-red' bindtap="goDetail" data-id="{{item.id}}"><text>查看详情</text></view>
             </view>
@@ -74,7 +75,8 @@
                   <text>车型：{{item.carType}}</text>
                 </view>
                 <view class="detail-banner">
-                  <image src="../../images/home/JM-home_banner_new_01.png"></image>
+                  <!-- <image src="../../images/home/JM-home_banner_new_01.png"></image> -->
+                  <image src="{{item.imgUrl}}" mode="aspectFill"></image>
                 </view>
                 <view class='button-red' bindtap="goMyDetail" data-id="{{item.id}}"><text>查看详情</text></view>
               </view>

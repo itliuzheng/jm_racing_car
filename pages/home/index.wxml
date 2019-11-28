@@ -2,12 +2,12 @@
 <view class="home">
   <view class="page-body">
     <view class="page-section rc_swiper">
-      <swiper style="height:258rpx;" indicator-dots="{{true}}" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#fff" autoplay="{{false}}" interval="3000">
+      <swiper style="height:258rpx;" indicator-dots="{{true}}" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#fff" autoplay="{{true}}" interval="3000">
         <block wx:for="{{background}}" wx:key="unique">
           <swiper-item>
             <view class="swiper-item">
-              <image src="../../images/home/JM-home_banner.png" mode="aspectFill"></image>
-              <!-- <image src="{{item.targetUrl}}" mode="aspectFill"></image> -->
+              <!-- <image src="../../images/home/JM-home_banner.png" mode="aspectFill"></image> -->
+              <image src="{{item.imgUrl}}" mode="aspectFill"></image>
             </view>
           </swiper-item>
         </block>
@@ -37,8 +37,8 @@
     <view class="news-list-box">
       <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow}}">
         <view class="new-banner">
-          <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image>
-          <!-- <image src="{{item.imgUrl}}" mode="aspectFill"></image> -->
+          <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
+          <image src="{{item.imgUrl}}" mode="aspectFill"></image>
         </view>
         <text class="new-title">{{item.title}}</text>
         <text class="new-desc">{{item.digest}}</text>

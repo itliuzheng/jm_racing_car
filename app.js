@@ -46,8 +46,8 @@ App({
     uid: null,
     _ishua: true,
     shareInfo: {
-      title: '美途等您',
-      path: '/pages/index/index',
+      title: '赛道等您',
+      path: '/pages/home/index',
       imageUrl: ''
     }
   }
