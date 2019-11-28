@@ -8,7 +8,9 @@
     "pages/myself/index",
     "pages/login/login",
     "pages/myself/driver_license/driver_license",
-    "pages/login/toloading/toloading"
+    "pages/myself/game_license/game_license",
+    "pages/login/toloading/toloading",
+    "pages/placeinfo/place_list/place_list"
   ],
   "window": {
     "backgroundTextStyle": "dark",

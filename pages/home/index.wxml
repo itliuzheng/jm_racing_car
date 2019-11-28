@@ -18,7 +18,7 @@
       <navigator open-type="switchTab"  url="/pages/reservation/index" class="rc_reserve_section">
         <image src="../../images/home/JM-home_yuyue_01.png" mode="scaleToFill"></image>
       </navigator>
-      <navigator url="/pages/placeinfo/index" class="rc_reserve_section">
+      <navigator url="/pages/placeinfo/place_list/place_list" class="rc_reserve_section">
         <image src="../../images/home/JM-home_yuyue_02.png" mode="scaleToFill"></image>
       </navigator>
       <!-- <view class="rc_reserve_section" bindtap="goPlace">
@@ -37,8 +37,8 @@
     <view class="news-list-box">
       <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow}}">
         <view class="new-banner">
-          <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
-          <image src="{{item.imgUrl}}" mode="aspectFill"></image>
+          <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image>
+          <!-- <image src="{{item.imgUrl}}" mode="aspectFill"></image> -->
         </view>
         <text class="new-title">{{item.title}}</text>
         <text class="new-desc">{{item.digest}}</text>

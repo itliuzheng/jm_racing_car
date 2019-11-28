@@ -4,16 +4,24 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
-		"postcss": false,
+		"postcss": true,
 		"minified": false,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.9.4",
 	"appid": "wx6db1fa79e64d9ba8",
 	"projectname": "jm_racing_car",
 	"debugOptions": {
@@ -85,6 +93,20 @@
 					"name": "pages/login/toloading/toloading",
 					"pathName": "pages/login/toloading/toloading",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛道列表",
+					"pathName": "pages/placeinfo/place_list/place_list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/placeinfo/index",
+					"pathName": "pages/placeinfo/index",
+					"query": "id=1",
 					"scene": null
 				}
 			]

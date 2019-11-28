@@ -4,8 +4,8 @@
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <view class="userinfo-nickname" >
       <text class="nickname">{{userInfo.nickName}}</text>
-      <text class="nickname_desc">您已在xxx天，感谢您的陪伴</text>
-      <view class="veservation_amount">预约金￥xxx</view>
+      <text class="nickname_desc">您已在{{user.inDays}}天，感谢您的陪伴</text>
+      <!-- <view class="veservation_amount">预约金￥xxx</view> -->
     </view>
     <image class="myself-bg" src="../../images/myself/bg.png"></image>
   </view>
@@ -18,22 +18,29 @@
     <view class="info-list">
       <view class="list-cell">
         <image class="list-icon fl" src="../../images/myself/list_icon1.png"></image>
-        <text class="fl">姓名  {{userInfo.nickName}}</text>
+        <text class="fl">姓名  {{user.realName}}</text>
       </view>
       <view class="list-cell">
         <image class="list-icon fl" src="../../images/myself/list_icon2.png"></image>
         <text class="fl">年龄   {{user.age}}</text>
       </view>
-      <navigator url="/pages/myself/driver_license/driver_license">
+      <navigator url="/pages/myself/driver_license/driver_license?id={{user.id}}">
         <view class="list-cell list-cell-link">
           <image class="list-icon fl" src="../../images/myself/list_icon3.png"></image>
-          <text class="fl">驾龄   </text>
+          <text class="fl">驾照信息   </text>
         </view>
       </navigator>
-      <view class="list-cell">
+      <!-- pages/myself/game_license/game_license  -->
+      <navigator url="/pages/myself/game_license/game_license?id={{user.id}}">
+        <view class="list-cell list-cell-link">
+          <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
+          <text class="fl">级别   </text>
+        </view>
+      </navigator>
+      <!-- <view class="list-cell">
         <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
         <text class="fl">级别   </text>
-      </view>
+      </view> -->
     </view>
 
   </view>

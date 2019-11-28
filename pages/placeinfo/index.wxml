@@ -2,8 +2,8 @@
 <view class="place-info">
   <view class="info-header">
     <view class="title-left">「最新赛场」</view>
-    <view class="title">国际赛车场主赛道</view>
-    <view class="title-desc">最新最热的保时捷概念赛车邀请你火热试驾</view>
+    <view class="title">{{info.name}}</view>
+    <view class="title-desc">{{info.address}}</view>
   </view>
 
   <view class="article-box">

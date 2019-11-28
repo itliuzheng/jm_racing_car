@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:null,
+    id: null,
     image_front: null,
     image_black: null,
     "frontImg": "string //驾照正面base64照片",
@@ -19,13 +19,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.id){
+    if (options.id) {
       this.setData({
         id: options.id
       });
       this.getUser()
-      
+
     }
+
   },
 
   /**
@@ -91,7 +92,7 @@ Page({
       wx.hideLoading();
 
       if (res.data.code == 1) {
-        let imageStr = res.data.data.drivingLicenseUrl;
+        let imageStr = res.data.data.gameImgUrl;
         this.setData({
           image_front: imageStr.split(',')[0],
           image_black: imageStr.split(',')[1]
@@ -186,7 +187,7 @@ Page({
       frontImgSuffix: this.data.frontImgSuffix,
       backImg: this.data.backImg,
       backImgSuffix: this.data.backImgSuffix
-    }, `/user/uploadDrivingImg`, (resp) => { 
+    }, `/user/uploadGameImg`, (resp) => { 
 
       wx.hideLoading();
       let res = resp.data;

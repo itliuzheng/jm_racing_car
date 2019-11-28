@@ -1,8 +1,8 @@
 <!--pages/myself/driver_license/driver_license.wxml-->
 <view class="license-box">
-  <view class="title">上传本人驾驶证照片</view>
-  <view class="desc">1.请上传微信账户本人的驾驶证照片</view>
-  <view class="desc">2.拍照时请确保驾驶证边框完整、图像清晰、光线均匀</view>
+  <view class="title">上传本人赛照</view>
+  <view class="desc">1.请上传微信账户本人的赛照</view>
+  <view class="desc">2.拍照时请确保赛照边框完整、图像清晰、光线均匀</view>
 
   <view class="upload-form">
     <view class="upload-photo" bindtap="chooseImage">
