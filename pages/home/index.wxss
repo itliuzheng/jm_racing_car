@@ -17,6 +17,7 @@
 .swiper-item image{
   height: 100%;
   width: 100%;
+  display: block;
 }
 
 .rc_reserve{
@@ -32,6 +33,7 @@
 .rc_reserve_section image{
   width: 336rpx;
   height: 241rpx;
+  display: block;
 }
 .rc_reserve .rc_reserve_section:last-child{
   margin-right: 0;
@@ -83,6 +85,7 @@
 .new-banner image{
   height: 100%;
   width: 100%;
+  display: block;
 }
 .news-list .new-title{
   display: block;

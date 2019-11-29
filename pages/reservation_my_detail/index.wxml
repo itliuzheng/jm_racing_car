@@ -15,7 +15,7 @@
       </view>
       <view class="row">
         <view class="text-left">教练   <text>{{info.coach}}</text>  </view>
-        <view class="text-right">场地   <text>{{info.site}}</text> </view>
+        <view class="text-right">场地   <text>{{info.site.name}}</text> </view>
       </view>
       <view class="row">
         <view class="text-left">车型   <text>{{info.carType}}</text>  </view>
