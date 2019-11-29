@@ -1,7 +1,7 @@
 //注册或登录
 const getUid = '/wx/user/login',
   //主域名
-  https = "http://123.57.55.155",
+  https = "https://ceshi.zhaiquanguanjia.com",
 
   //存微信头像
   saveInfo = '/wx/user/saveInfo',

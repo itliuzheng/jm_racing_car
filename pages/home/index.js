@@ -1,6 +1,7 @@
 // pages/home/index.js
 const config = require('../../utils/config.js');
 let app = getApp()
+let timer = null
 
 Page({
 
@@ -88,7 +89,7 @@ Page({
     }
 
 
-    setTimeout(function(){
+    timer = setTimeout(function(){
       console.log('hasUserInfo-4--', _this.data.hasUserInfo);
 
       if (_this.data.hasUserInfo == false) {
@@ -125,7 +126,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearTimeout(timer)
   },
 
   /**
