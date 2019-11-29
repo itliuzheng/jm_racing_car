@@ -62,12 +62,16 @@ Page({
         // console.log('清除定时器');
         // clearTimeout(timer);
 
+        console.log(app.globalData.uid);
+
         if (!app.globalData.uid) {
+          console.log(app.globalData.uid);
           wx.navigateTo({
             url: '/pages/login/toloading/toloading'
           })
         }
         if (!token) {
+          console.log('token==',token);
           wx.navigateTo({
             url: '/pages/login/login'
           })

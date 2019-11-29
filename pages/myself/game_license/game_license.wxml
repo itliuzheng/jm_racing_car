@@ -6,12 +6,20 @@
 
   <view class="upload-form">
     <view class="upload-photo" bindtap="chooseImage">
-      <image src="{{image_front}}"></image>
+      <view class="upload-toast" wx:if="{{!image_front}}">
+        <image src="/images/login/upload_01.png" ></image>
+        <view class="name">人像面照片</view>
+      </view>
+      <image src="{{image_front}}" wx:if="{{image_front}}"></image>
     </view>
   </view>
   <view class="upload-form">
     <view class="upload-photo" bindtap="chooseImageBlack">
-      <image src="{{image_black}}"></image>
+      <view class="upload-toast upload-toast-back" wx:if="{{!image_black}}">
+        <image src="/images/login/upload_02.png" ></image>
+        <view class="name">背面照片</view>
+      </view>
+      <image src="{{image_black}}"  wx:if="{{image_black}}"></image>
     </view>
   </view>
   

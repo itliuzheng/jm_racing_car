@@ -108,6 +108,12 @@
 					"pathName": "pages/placeinfo/index",
 					"query": "id=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "赛照",
+					"pathName": "pages/myself/game_license/game_license",
+					"scene": null
 				}
 			]
 		}

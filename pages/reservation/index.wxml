@@ -32,7 +32,7 @@
             </view>
           </view>
           <view class='detail-list-box'>
-            <view class="detail-list" wx:for="{{activitys.data}}" wx:key="unique">
+            <view class="detail-list" wx:for="{{activitys.data}}" wx:key="unique" wx:if="{{item.isShow == 1}}">
               <text class="title">{{item.title}}</text>
               <view class='desc clearfix'>
                 <text class='fl'>时间：{{item.startDate}}</text>
@@ -63,7 +63,7 @@
       <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
         <view class="item-container-myactivity one-scene">
           <view class='detail-list-box'>
-            <block wx:for="{{my_activitys.data}}" wx:key="unique">
+            <block wx:for="{{my_activitys.data}}" wx:key="unique" wx:if="{{item.isShow == 1}}">
               <view class="my-activity-time">{{item.startDate}}</view>
               <view class="detail-list" >
                 <text class="title">{{item.title}}</text>
