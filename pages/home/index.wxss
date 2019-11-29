@@ -1,9 +1,13 @@
 /* pages/home/index.wxss */
+page{
+  
+  background-image: linear-gradient(180deg, #fff 5%,#f1f0f5 95%);
+}
 .home{
   /* background: #fff; */
-  min-height:1000rpx;
+  /* min-height:1000rpx; */
   height: 100%;
-  background-image: linear-gradient(180deg, #fff 5%,#f1f0f5 95%);
+  /* background-image: linear-gradient(180deg, #fff 5%,#f1f0f5 95%); */
   padding: 30rpx 28rpx;
 }
 

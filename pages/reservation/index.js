@@ -145,9 +145,11 @@ Page({
     })
 
     console.log('page==',page);
-
+    let site = {
+      name: that.data.place_index != null ? that.data.areas[that.data.place_index] : ''
+    };
     config.ajax('POST', {
-      site: that.data.place_index != null ? that.data.areas[that.data.place_index] : '',
+      site: site,
       startDate: that.data.time_index != null ? that.data.dateList[that.data.time_index].date : '',
       pageNum: page
     }, config.activity, (resp) => { }, (res) => { }, (resp) => {
