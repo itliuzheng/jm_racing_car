@@ -36,12 +36,14 @@
     </view>
     <view class="news-list-box">
       <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow == 0}}">
-        <view class="new-banner">
-          <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
-          <image src="{{item.imgUrl}}" mode="aspectFill"></image>
-        </view>
-        <text class="new-title">{{item.title}}</text>
-        <text class="new-desc">{{item.digest}}</text>
+        <navigator url="/pages/news/index?id={{item.id}}">
+          <view class="new-banner">
+            <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
+            <image src="{{item.imgUrl}}" mode="aspectFill"></image>
+          </view>
+          <text class="new-title">{{item.title}}</text>
+          <text class="new-desc">{{item.digest}}</text>
+        </navigator>
       </view>
     </view>
   </view>

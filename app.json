@@ -5,6 +5,7 @@
     "pages/reservation_detail/index",
     "pages/reservation_my_detail/index",
     "pages/placeinfo/index",
+    "pages/news/index",
     "pages/myself/index",
     "pages/login/login",
     "pages/myself/driver_license/driver_license",

@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="place-info">
+  <view class="info-header">
+    <view class="title-left">「最新咨询」</view>
+    <view class="title">{{info.title}}</view>
+    <view class="title-desc">{{info.digest}}</view>
+  </view>
+
+  <view class="article-box">
+    <import src="../../wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
