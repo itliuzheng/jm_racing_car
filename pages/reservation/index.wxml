@@ -1,3 +1,5 @@
+
+
 <view class="stv-container">
   <swiper-view class="tab-bar" scroll-with-animation="true" scroll-x="true">
     <block wx:for="{{tabInfo}}" wx:key="unique">
@@ -9,7 +11,6 @@
 
   <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" 
     style="height: {{swiperHeight}}px;">
-  <!-- style="height:{{currentTab == 0 ? swiperHeight : swiperPhotoHeight}}px" -->
     <swiper-item>
       <scroll-view scroll-y="true" style="height: {{swiperHeight}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
         
@@ -23,13 +24,26 @@
                 </view>
               </picker>
             </view>
-            <view class="select-time">
-              <view bindtap="selectTime" data-index="{{index}}" wx:for="{{dateList}}" wx:key="unique" class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
+            <!-- <view class="select-time">
+              <view bindtap="selectTime" data-index="{{index}}" wx:for="{{dateList}}" wx:key="unique"
+               class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
                 <view class="month">{{item.month}}</view>
                 <view class="week">{{item.week}}</view>
                 <view class="day">{{item.day}}</view>
               </view>
-            </view>
+            </view> -->
+            
+            <scroll-view scroll-x class="scroll-x">
+              <view class="select-time" wx:for="{{dateList}}">
+                <view bindtap="selectTime" data-index="{{index}}"  wx:key="unique"
+                class="time-list {{index==time_index?'active':''}} {{index==time_now_index?'now':''}}">
+                  <view class="month">{{item.month}}</view>
+                  <view class="week">{{item.week}}</view>
+                  <view class="day">{{item.day}}</view>
+                </view>
+              </view>
+            </scroll-view>
+            
           </view>
           <view class='detail-list-box'>
             <view class="detail-list" wx:for="{{activitys.data}}" wx:key="unique" wx:if="{{item.isShow == 1}}">
@@ -42,7 +56,6 @@
                 <text>车型：{{item.carType}}</text>
               </view>
               <view class="detail-banner">
-                <!-- <image src="../../images/home/JM-home_banner_new_01.png"></image> -->
                 <image src="{{item.imgUrl}}" mode="aspectFill"></image>
               </view>
               <view class='button-red' bindtap="goDetail" data-id="{{item.id}}"><text>查看详情</text></view>
@@ -75,7 +88,6 @@
                   <text>车型：{{item.carType}}</text>
                 </view>
                 <view class="detail-banner">
-                  <!-- <image src="../../images/home/JM-home_banner_new_01.png"></image> -->
                   <image src="{{item.imgUrl}}" mode="aspectFill"></image>
                 </view>
                 <view class='button-red' bindtap="goMyDetail" data-id="{{item.id}}"><text>查看详情</text></view>

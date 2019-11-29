@@ -52,6 +52,61 @@
    background: #f0f0f5;
 }
 
+/* 时间滑动 */
+.scroll-x{
+    height:80px;
+    white-space:nowrap;
+    display:flex;
+}
+/* 隐藏scrollbar */
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.select-header .select-time{
+  display:inline-block;
+  margin-bottom: 40rpx;
+}
+.select-time .time-list{
+  margin: 0 13rpx;
+}
+.time-list{
+  text-align: center;
+  color: #6f788a;
+  background: #e3e3e9;
+  border-radius: 4rpx;
+  padding-top: 14rpx;
+  padding-bottom: 17rpx;
+  border: 1rpx solid transparent;
+}
+.time-list.active{
+  background-image: linear-gradient(180deg, #fe6b45,#d61b35);
+  color: #fff;
+}
+.time-list.now{
+  border:1rpx solid #bbbbcf;
+}
+.time-list .month{
+  font-size: 12rpx;
+  line-height: 1;
+  margin-bottom: 4rpx;
+}
+.time-list .week{
+  font-size: 24rpx;
+  line-height: 1;
+  margin-bottom: 5rpx;
+}
+.time-list .day{
+  font-size: 41rpx;
+  line-height: 1;
+}
+
+
+/* end */
+
+
 /* 选择想要的场地/时间 */
 .select-header .select-place{
   padding-top: 60rpx;
@@ -77,7 +132,7 @@
   font-size: 28rpx;
 }
 
-.select-header .select-time{
+/* .select-header .select-time{
   display: flex;
   margin-bottom: 40rpx;
 }
@@ -114,7 +169,7 @@
 .time-list .day{
   font-size: 41rpx;
   line-height: 1;
-}
+} */
 /* end */
 
 /* 列表 */
