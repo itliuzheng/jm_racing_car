@@ -144,6 +144,7 @@ Page({
         config.mytoast(res.data.msg, (res) => { })
       }
     }, (res) => {
+      config.mytoast('网络异常，请稍后重试', (res) => { })
 
     })
 

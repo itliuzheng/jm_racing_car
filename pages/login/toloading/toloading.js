@@ -69,15 +69,15 @@ Page({
   /**
    * 保存用户头像
    */
-  savaUserInfo() {
+  savaUserInfo(resp) {
     config.ajax('POST', {
       openId: app.globalData.uid,
-      avatarUrl: app.globalData.userInfo.avatarUrl,
-      nickName: app.globalData.userInfo.nickName,
-      gender: app.globalData.userInfo.gender,
-      province: app.globalData.userInfo.province,
-      city: app.globalData.userInfo.city,
-      country: app.globalData.userInfo.country
+      avatarUrl: resp.avatarUrl,
+      nickName: resp.nickName,
+      gender: resp.gender,
+      province: resp.province,
+      city: resp.city,
+      country: resp.country
     }, config.saveInfo, (res) => {
       console.log('config.saveInfo---', res);
       console.log(res.data.msg);
@@ -101,7 +101,7 @@ Page({
       console.log('onGotUserInfo---', res);
       if (res.data.code == 1) {
         app.globalData.uid = res.data.data
-        this.savaUserInfo()
+        this.savaUserInfo(e.detail.userInfo)
       } else {
         config.mytoast('服务器错误,请稍后再试', (res) => { })
       }
