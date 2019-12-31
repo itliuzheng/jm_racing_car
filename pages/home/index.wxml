@@ -1,4 +1,4 @@
-<!--pages/home/index.wxml-->
+
 <view class="home">
   <view class="page-body">
     <view class="page-section rc_swiper">
@@ -6,7 +6,6 @@
         <block wx:for="{{background}}" wx:key="unique">
           <swiper-item>
             <view class="swiper-item">
-              <!-- <image src="../../images/home/JM-home_banner.png" mode="aspectFill"></image> -->
               <image src="{{item.imgUrl}}" mode="aspectFill"></image>
             </view>
           </swiper-item>
@@ -21,9 +20,6 @@
       <navigator url="/pages/placeinfo/place_list/place_list" class="rc_reserve_section">
         <image src="../../images/home/JM-home_yuyue_02.png" mode="scaleToFill"></image>
       </navigator>
-      <!-- <view class="rc_reserve_section" bindtap="goPlace">
-        <image src="../../images/home/JM-home_yuyue_02.png"></image>
-      </view> -->
     </view>
   </view>
 
@@ -38,7 +34,6 @@
       <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow == 0}}">
         <navigator url="/pages/news/index?id={{item.id}}">
           <view class="new-banner">
-            <!-- <image src="../../images/home/JM-home_banner_new_01.png" mode="aspectFill"></image> -->
             <image src="{{item.imgUrl}}" mode="aspectFill"></image>
           </view>
           <text class="new-title">{{item.title}}</text>

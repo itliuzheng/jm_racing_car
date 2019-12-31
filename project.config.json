@@ -4,8 +4,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": false,
 		"newFeature": true,
@@ -52,70 +53,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/myself/index",
-					"pathName": "pages/myself/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "预约",
-					"pathName": "pages/reservation/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/reservation_detail/index",
-					"pathName": "pages/reservation_detail/index",
-					"query": "id=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myself/driver_license/driver_license",
-					"pathName": "pages/myself/driver_license/driver_license",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/login/toloading/toloading",
-					"pathName": "pages/login/toloading/toloading",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "赛道列表",
-					"pathName": "pages/placeinfo/place_list/place_list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/placeinfo/index",
-					"pathName": "pages/placeinfo/index",
-					"query": "id=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "赛照",
-					"pathName": "pages/myself/game_license/game_license",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }

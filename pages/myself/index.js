@@ -33,7 +33,24 @@ Page({
   },
   onShow() {
 
-    this.getUserId();
+    
+    let pages = getCurrentPages();
+    let currPage = null;
+    if (pages.length) {
+      currPage = pages[pages.length - 1];
+    }
+    let url = currPage.options.url;
+    console.log(currPage.__displayReporter.showReferpagepath);
+    if (currPage.__displayReporter.showReferpagepath == 'pages/login/login.html' || currPage.__displayReporter.showReferpagepath == 'pages/login/toloading/toloading.html') {
+      
+      wx.reLaunch({
+        url: '/pages/home/index',
+      })
+      return false;
+    } else {
+
+      this.getUserId();
+    }
   },
   getUserId() {
 
@@ -64,8 +81,7 @@ Page({
 
         console.log(app.globalData.uid);
 
-        if (!app.globalData.uid) {
-          console.log(app.globalData.uid);
+        if (!app.globalData.userInfo) {
           wx.navigateTo({
             url: '/pages/login/toloading/toloading'
           })
