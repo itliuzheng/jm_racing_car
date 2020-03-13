@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" style="height: {{height}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
+  <view class="list_box">
+    <view class="list" wx:for="{{info.data}}" :key="unique" bindtap="goDetail" data-id="{{item.serialNum}}">
+      <view class="p">设备编号：{{item.serialNum}}</view>
+      <view class="p">所属项目：{{item.project.name}}</view>
+      <view class="p">上报时间：{{item.createDate}}</view>
+    </view>
+  </view>
+</scroll-view>

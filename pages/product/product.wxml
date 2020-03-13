@@ -1,0 +1,84 @@
+<!--pages/product/product.wxml-->
+<view class="pages">
+  <view class="banner">
+    <image src="{{info.programImgUrl}}"></image>
+  </view>
+  <view class="section">
+    <view class="title">{{info.name}}</view>
+    <view class="list-box">
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">项目面积：</view>
+        <view class="content content_block">{{info.area}}平方 I 东西长度：{{info.fromEastToWest}}米 I 南北长度：{{info.fromSouthToNorth}}米</view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">项目地址：</view>
+        <view class="content">{{info.address}}</view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">项目位置：</view>
+        <view class="content">
+        <image class="icon_address" src="/images/detail/address.png"></image>
+        <text class="address" bindtap="goMap" data-locationx="{{info.locationX}}" data-locationy="{{info.locationY}}">点击查看</text>
+        </view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">开工时间：</view>
+        <view class="content">{{info.createDate}}</view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">工程进度：</view>
+        <view class="content">{{info.engineeringProgress}}</view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">基坑状态：</view>
+        <view class="content">{{item.excavationState == 1?"已回填":"未回填"}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="title">单位</view>
+    <view class="list-box">
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">建设单位：{{info.buildOrg}}</view>
+        <view class="content"></view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">施工单位：{{info.constructionOrg}}</view>
+        <view class="content"></view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">监理单位：{{info.supervisionOrg}}</view>
+        <view class="content"></view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">产权单位：{{info.propertyOrg}}</view>
+        <view class="content"></view>
+      </view>
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">安装单位：{{info.installOrg}}</view>
+        <view class="content"></view>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="title">单位</view>
+    <view class="list-box">
+      <view class="list">
+        <image class="icon" src="/images/detail/radius.png"></image>
+        <view class="label">项目概况</view>
+        <view class="main">{{info.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

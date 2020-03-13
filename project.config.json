@@ -23,8 +23,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
-	"appid": "wx6db1fa79e64d9ba8",
-	"projectname": "jm_racing_car",
+	"appid": "wx2b451bfbf7a67d56",
+	"projectname": "lvcsmart",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -53,7 +53,64 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/myself/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "测试工程详情页",
+					"pathName": "pages/product/product",
+					"query": "id=23",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "塔机",
+					"pathName": "pages/taji/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "塔机详情",
+					"pathName": "pages/taji/detail/detail",
+					"query": "id=1163",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/map",
+					"pathName": "pages/map/map",
+					"query": "locationX=45.803131&locationY=126.535319",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/message/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报警消息",
+					"pathName": "pages/message/alarm/alarm",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

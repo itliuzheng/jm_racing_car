@@ -1,0 +1,18 @@
+<view class="list_box">
+  <view class="list"  bindtap="system">
+    <view class="p">
+      <text class="fl">系统消息</text>
+      <text class="blue">3</text>
+    </view>
+  </view>
+  <view class="list"  bindtap="alarm">
+    <view class="p no-border">
+      <text class="fl">报警消息</text>
+      <text class="blue">3</text>
+    </view>
+  </view>
+
+  <view class="message_btn">
+    <image src="/images/message/message.png"></image>
+  </view>
+</view>

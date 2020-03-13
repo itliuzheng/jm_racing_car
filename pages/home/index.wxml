@@ -1,45 +1,22 @@
+<view class="pages">
 
-<view class="home">
-  <view class="page-body">
-    <view class="page-section rc_swiper">
-      <swiper style="height:258rpx;" indicator-dots="{{true}}" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#fff" autoplay="{{true}}" interval="3000">
-        <block wx:for="{{background}}" wx:key="unique">
-          <swiper-item>
-            <view class="swiper-item">
-              <image src="{{item.imgUrl}}" mode="aspectFill"></image>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
 
-    <view class="rc_reserve">
-      <navigator open-type="switchTab"  url="/pages/reservation/index" class="rc_reserve_section">
-        <image src="../../images/home/JM-home_yuyue_01.png" mode="scaleToFill"></image>
-      </navigator>
-      <navigator url="/pages/placeinfo/place_list/place_list" class="rc_reserve_section">
-        <image src="../../images/home/JM-home_yuyue_02.png" mode="scaleToFill"></image>
-      </navigator>
-    </view>
-  </view>
-
-  <view class="rc_news">
-    <view class="news-title clearfix">
-      <view class="title fl">最新资讯</view>
-      <view class="more fr">
-        <image src="../../images/home/more.png" mode="scaleToFill" ></image>
+  <scroll-view scroll-y="true" style="height: {{height}}px;" bindscrolltolower="scrollBottomTab" scroll-anchoring="{{true}}">
+    <view class="list_card" wx:for="{{info.data}}" wx:key="unique" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="header">
+        <view class="title">{{item.name}}</view>
+      </view>
+      <view class="main">
+        <view class="content">{{item.description}}</view>
+        <view class="el_col">
+          <view class="el_row">时间：{{item.createDate}} </view>
+          <view class="el_row">地址：{{item.address}}</view>
+        </view>
+        <view class="el_col">
+          <view class="el_row">基坑状态：{{item.excavationState == 1?"已回填":"未回填"}}</view>
+          <view class="el_row">工程进度：{{item.engineeringProgress}}</view>
+        </view>
       </view>
     </view>
-    <view class="news-list-box">
-      <view class="news-list" wx:for="{{news}}" wx:key="index" wx:if="{{item.isShow == 0}}">
-        <navigator url="/pages/news/index?id={{item.id}}">
-          <view class="new-banner">
-            <image src="{{item.imgUrl}}" mode="aspectFill"></image>
-          </view>
-          <text class="new-title">{{item.title}}</text>
-          <text class="new-desc">{{item.digest}}</text>
-        </navigator>
-      </view>
-    </view>
-  </view>
+  </scroll-view>
 </view>

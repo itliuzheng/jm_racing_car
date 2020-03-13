@@ -1,0 +1,71 @@
+/* pages/product/product.wxss */
+.pages{
+  padding-bottom: 30rpx;
+}
+.banner{
+  font-size: 0;
+}
+.banner image{
+  width: 750rpx;
+  height: 378rpx;
+}
+
+.section{
+  padding-left: 36rpx;
+}
+.title{
+  font-size: 32rpx;
+  font-weight:bold;
+  color:rgba(0,0,0,1);
+  line-height: 1;
+  margin-top: 50rpx;
+  margin-bottom: 38rpx;
+  overflow-y: hidden;
+}
+
+.list-box{
+  padding-right: 60rpx;
+}
+
+.icon{
+  width: 7rpx;
+  height: 7rpx;
+  margin-right: 17rpx;
+  vertical-align: top;
+  margin-top: 12rpx;
+}
+.icon_address{
+  width: 23rpx;
+  height: 28rpx;
+}
+.address{
+  font-size:26rpx;
+  font-weight:500;
+  text-decoration:underline;
+  color:rgba(68,187,255,1);
+  line-height:38rpx;
+  margin-left: 17rpx;
+}
+.label,.content{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 1;
+  overflow-y: hidden;
+}
+.content_block{
+  display: block;
+  padding-left: 24rpx;
+  margin-bottom: 20rpx;
+}
+.main{
+  display: block;
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(121,121,121,1);
+  line-height:30rpx;
+  padding-left: 23rpx;
+  text-align: justify;
+}

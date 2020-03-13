@@ -1,91 +1,65 @@
 /**index.wxss**/
-.myself{
+page{
   height: 100%;
   background: #fafafa;
+  padding-top: 25rpx;
 }
-.userinfo{
-  width: 100%;
-  height: 324rpx;
-  border-bottom: 2rpx solid #d8dfe7;
-  padding: 87rpx 28rpx 0;
-  background: #fff;
+
+.card{
   position: relative;
 }
-
-.userinfo-avatar {
-  width: 104rpx;
-  height: 104rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  display: inline-block;
-  color: #000;
-  font-size: 46rpx;
-  line-height: 1;
-  margin-left: 26rpx;
-  vertical-align: top;
-}
-
-.userinfo-nickname .nickname{
-  display: block;
-  margin: 13rpx 0 15rpx;
-  line-height: 1;
-}
-.userinfo-nickname .nickname_desc{
-  display: block;
-  font-size: 20rpx;
-  color: #b7b7b7;
-  font-weight: normal;
-  line-height: 1;
-}
-
-.veservation_amount{
-  display: inline-block;
-  margin-top: 20rpx;
-  padding: 0 14rpx 0 20rpx;
-  height: 48rpx;
-  background: #ffefef;
-  color: #fc5d5d;
-  font-weight: bold;
-  line-height: 48rpx;
-  font-size: 20rpx;
-}
-
-.myself-bg{
+.card_box{
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 245rpx;
-  height: 324rpx;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+.avatar{
+  width: 100rpx;
+  height: 100rpx;
+  background: #fff;
+  border-radius: 50%;
+  margin: 52rpx auto 0;
+}
+.card_box .company,.name{
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:1;
+  margin-top: 25rpx;
+}
+.card .bj{
+  display: block;
+  width: 697rpx;
+  height: 303rpx;
+  margin: 0 auto 35rpx;
 }
 
 .my-info{
-  padding: 0 28rpx 15rpx; 
+  padding: 27rpx;
 }
-
-.my-info .my-info-title{
-  line-height: 1;
-  padding: 44rpx 0;
-  font-size: 34rpx;
-  color: #000;
-  font-weight: 500;
-}
-
-.list-cell{
-  height: 141rpx;
-  line-height: 141rpx;
+.info-list{
   background: #fff;
+  padding: 0 40rpx;
+}
+.list-cell{
+  height: 96rpx;
+  line-height: 96rpx;
+  overflow-y: hidden;
   border-radius: 10rpx;
-  margin-bottom: 30rpx; 
-  box-shadow: 1rpx 17rpx 20rpx 0px rgba(233, 234, 235, 0.59);
-  
   position: relative;
+  border-bottom: 1rpx solid #E6E6E6;
+}
+.list-cell-no-border{
+  border-bottom: 0 none;
 }
 .list-cell.list-cell-link:before{
   content: "";
   position: absolute;
-  right: 30rpx;
+  right: 0;
   top: 0;
   width: 11rpx;
   height: 100%;
@@ -93,12 +67,12 @@
   background-size: 100% 19rpx;
 }
 .list-cell .list-icon{
-  width: 76rpx;
-  height: 76rpx; 
+  width: 24rpx;
+  height: 30rpx; 
   margin-top: 34rpx;
-  margin-right: 33rpx;
-  margin-left: 32rpx;
+  margin-right: 18rpx;
 }
 .list-cell text{
-  font-size: 34rpx;
+  font-size: 30rpx;
+  color: #333;
 }

@@ -1,0 +1,50 @@
+<!-- 
+<view>
+  <view class="header"></view>
+  <view class="main">
+    <text class="time">最新数据时间：{{info.testingDate}}</text>
+    <view class="list_box">
+
+      <view class="list">
+        <view class="title">当前载重</view>
+        <view class="desc">0吨</view>
+      </view>
+
+      <view class="list">
+        <view class="title">当前高度</view>
+        <view class="desc">0米</view>
+      </view>
+
+      <view class="list">
+        <view class="title">风级</view>
+        <view class="desc">0级</view>
+      </view>
+
+      <view class="list">
+        <view class="title">前门状态</view>
+        <view class="desc">开</view>
+      </view>
+
+      <view class="list">
+        <view class="title">后门状态</view>
+        <view class="desc">开</view>
+      </view>
+
+      <view class="list">
+        <view class="title">人脸识别安装</view>
+        <view class="desc">未安装</view>
+      </view>
+
+      <view class="list">
+        <view class="title">报警状态</view>
+        <view class="desc">正常</view>
+      </view>
+
+    </view>
+  </view>
+</view> -->
+<view wx:if="{{serialNum}}">
+
+  <web-view src="https://cszj.lvcsmart.com/pages/miniprogram/latestTower.html?serialNum={{serialNum}}"></web-view>
+
+</view>

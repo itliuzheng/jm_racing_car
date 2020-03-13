@@ -1,46 +1,42 @@
 <!--index.wxml-->
 <view class="myself" >
-  <view class="userinfo" wx:if="{{hasUserInfo}}">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-    <view class="userinfo-nickname" >
-      <text class="nickname">{{userInfo.nickName}}</text>
-      <text class="nickname_desc">您已在{{user.inDays}}天，感谢您的陪伴</text>
-      <!-- <view class="veservation_amount">预约金￥xxx</view> -->
+  <view class="card">
+    <image class="bj" src="/images/myself/bj.png"></image>
+    <view class="card_box">
+      <view class="avatar"></view>
+      <view class="company">{{user.type == 1? "后台管理员":"普通用户"}}</view>
+      <view class="name">{{user.loginName}}</view>
     </view>
-    <image class="myself-bg" src="../../images/myself/bg.png"></image>
   </view>
-  <view class="userinfo" wx:else style="text-align:center">
-    <navigator url="/pages/home/index" open-type="switchTab" hover-class="other-navigator-hover">请先登录</navigator>
-  </view>
-
-  <view class="my-info"  wx:if="{{hasUserInfo}}">
-    <view class="my-info-title">我的信息</view>
+  <view class="my-info">
     <view class="info-list">
-      <view class="list-cell">
-        <image class="list-icon fl" src="../../images/myself/list_icon1.png"></image>
-        <text class="fl">姓名  {{user.realName}}</text>
-      </view>
-      <view class="list-cell">
-        <image class="list-icon fl" src="../../images/myself/list_icon2.png"></image>
-        <text class="fl">年龄   {{user.age}}</text>
-      </view>
+
       <navigator url="/pages/myself/driver_license/driver_license?id={{user.id}}">
         <view class="list-cell list-cell-link">
-          <image class="list-icon fl" src="../../images/myself/list_icon3.png"></image>
-          <text class="fl">驾照信息   </text>
+          <image class="list-icon fl" src="/images/myself/my.png"></image>
+          <text class="fl">个人资料</text>
         </view>
       </navigator>
-      <!-- pages/myself/game_license/game_license  -->
-      <navigator url="/pages/myself/game_license/game_license?id={{user.id}}">
+
+      <navigator url="/pages/myself/driver_license/driver_license?id={{user.id}}">
         <view class="list-cell list-cell-link">
-          <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
-          <text class="fl">级别   </text>
+          <image class="list-icon fl" src="/images/myself/password.png"></image>
+          <text class="fl">修改密码</text>
         </view>
       </navigator>
-      <!-- <view class="list-cell">
-        <image class="list-icon fl" src="../../images/myself/list_icon4.png"></image>
-        <text class="fl">级别   </text>
-      </view> -->
+
+      <navigator url="/pages/myself/driver_license/driver_license?id={{user.id}}">
+        <view class="list-cell list-cell-link">
+          <image class="list-icon fl" style="width:27rpx;height:27rpx" src="/images/myself/message.png"></image>
+          <text class="fl">我的消息记录</text>
+        </view>
+      </navigator>
+      
+      <view class="list-cell list-cell-link list-cell-no-border" bindtap="goOut">
+        <image class="list-icon fl" style="width:24rpx;height:24rpx" src="/images/myself/out.png"></image>
+        <text class="fl">退出登录</text>
+      </view>
+
     </view>
 
   </view>

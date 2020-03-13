@@ -1,0 +1,4 @@
+<!--pages/map/map.wxml-->
+<view wx:if="{{locationX}}">
+  <map id="map" longitude="{{locationY}}" latitude="{{locationX}}" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap"  bindregionchange="regionchange" show-location style="width: 100%; height: {{height}}px;"></map>
+</view>

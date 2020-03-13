@@ -1,28 +1,20 @@
 //注册或登录
 const getUid = '/wx/user/login',
   //主域名
-  https = "https://ceshi.zhaiquanguanjia.com",
+  https = "https://cszj.lvcsmart.com",
 
-  //存微信头像
-  saveInfo = '/wx/user/saveInfo',
-  //活动预约
-  activity = '/activity/activity/page',
-  //我的活动预约
-  my_activity = '/activity/activity/my',
-  // 预约操作
-  activity_book = '/activity/activity/book',
 
   //获取微信手机号
   getWXPhone = '/wx/user/getWXPhone',
   //用户登录
   userlogin = '/user/login',
-  //注册
-  register = '/wx/user/register',
-  //获取banner
-  getBanner = '/allocation/banner-config/page',
-  //获取 咨询管理
-  getNews = '/allocation/news/page'
+  //获取首页项目分页数据
+  getProject = '/project/page',
+  //获取塔机分页数据
+  getDevice = '/device/tower-crane/page'
+  
 
+  
   
 /**
  * 封装本地存储
@@ -237,15 +229,10 @@ module.exports = {
   getUid: getUid,
   getuid: getuid,
   mytoast: mytoast,
-  saveInfo: saveInfo,
-  activity: activity,
-  my_activity: my_activity,
-  activity_book: activity_book,
   getWXPhone: getWXPhone,
-  register: register,
   userlogin: userlogin,
   setStorage: setStorage,
   getStorage: getStorage,
-  getBanner: getBanner,
-  getNews: getNews
+  getProject:getProject,
+  getDevice:getDevice
 } 

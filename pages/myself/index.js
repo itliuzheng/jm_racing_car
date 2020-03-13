@@ -7,12 +7,8 @@ let timer = null
 
 Page({
   data: {
-    nickname:'hello',
-    userInfo:null,
     userId:null,
-    user:null,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    hasUserInfo:false
+    user:null
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -21,6 +17,7 @@ Page({
   //   })
   // },
   onLoad: function () {
+
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -32,8 +29,16 @@ Page({
     wx.hideLoading();
   },
   onShow() {
-
     
+    let token = wx.getStorageSync('token') || null;
+    if (!token) {
+      console.log('token==',token);
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false;
+    }
+
     let pages = getCurrentPages();
     let currPage = null;
     if (pages.length) {
@@ -41,8 +46,7 @@ Page({
     }
     let url = currPage.options.url;
     console.log(currPage.__displayReporter.showReferpagepath);
-    if (currPage.__displayReporter.showReferpagepath == 'pages/login/login.html' || currPage.__displayReporter.showReferpagepath == 'pages/login/toloading/toloading.html') {
-      
+    if (currPage.__displayReporter.showReferpagepath == 'pages/login/login.html') {
       wx.reLaunch({
         url: '/pages/home/index',
       })
@@ -75,17 +79,7 @@ Page({
       } else {
         let token = wx.getStorageSync('token') || null;
         wx.hideLoading();
-
-        // console.log('清除定时器');
-        // clearTimeout(timer);
-
-        console.log(app.globalData.uid);
-
-        if (!app.globalData.userInfo) {
-          wx.navigateTo({
-            url: '/pages/login/toloading/toloading'
-          })
-        }
+        
         if (!token) {
           console.log('token==',token);
           wx.navigateTo({
@@ -109,8 +103,6 @@ Page({
       if (res.data.code == 1) {
         this.setData({
           user: res.data.data,
-          userInfo:app.globalData.userInfo,
-          hasUserInfo:true
         });
 
 
@@ -119,6 +111,13 @@ Page({
       }
     }, (res) => {
 
+    })
+  },
+  goOut(){
+    wx.setStorageSync('token','')
+    
+    wx.navigateTo({
+      url: '/pages/login/login'
     })
   }
 })

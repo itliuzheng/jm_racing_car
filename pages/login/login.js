@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isType:'login',
+    array: ['企业', '安全员', '管理员'],
+    index:0,
     send_code:true,
     sms:'发送验证码',
     currentTime:61,
@@ -71,56 +72,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getPhoneNumber(e) {
-    config.ajax('POST', {
-      openId: app.globalData.uid,
-      encriptedData: e.detail.encryptedData,
-      iv: e.detail.iv,
-    }, config.getWXPhone, (res) => {
-
-      console.log(res.data);
-      if (res.data.code == 1) {
-        this.setData({
-          phone: res.data.data
-        })
-      }
-    }, (res) => {
-
-    })
-
-  },
-  clickNav(e){
+  bindPickerChange: function(e) {
     this.setData({
-      isType: e.currentTarget.dataset.nav
-    });
-  },
-  getSms(){
-    this.data.currentTime--;
-    this.setData({
-      sms: this.data.currentTime+'秒'
+      index: e.detail.value
     })
-    if (this.data.currentTime <= 0) {
-      clearInterval(interval)
-      this.setData({
-        sms: '重新发送',
-        currentTime: 61,
-        send_code: true
-      })
-    }
-  },
-  sendCode(){
-    if (this.data.send_code){
-      this.setData({
-        send_code:false
-      });
-      interval = setInterval(this.getSms,1000);
-    }
   },
   formSubmit(e){
     let form = e.detail.value;
     console.log(form);
     if (form.loginName == '') {
-      config.mytoast('手机号不能为空', (res) => { })
+      config.mytoast('用户名不能为空', (res) => { })
       return false
     }
     if (form.password == '') {
@@ -129,12 +90,9 @@ Page({
     }
 
     config.ajax('POST', {
-      openId: app.globalData.uid,
       loginName: form.loginName,
       password: form.password
     }, config.userlogin, (res) => {
-      console.log(res.data);
-
       if (res.data.code == 1) {
         wx.setStorageSync('token', res.data.data)
         wx.switchTab({
@@ -145,62 +103,6 @@ Page({
       }
     }, (res) => {
       config.mytoast('网络异常，请稍后重试', (res) => { })
-
     })
-
   },
-  formSubmitRegister(e){
-    let form = e.detail.value;
-    console.log(form);
-    if (this.data.phone == '' || this.data.phone == '点击右侧按钮'){
-      config.mytoast('手机号不能为空', (res) => { })
-      return false
-    }
-    if (form.password != form.passwordAgain) {
-      config.mytoast('密码不一致，请重新输入', (res) => { })
-      return false
-    }
-    if (form.identityNo == '') {
-      config.mytoast('身份证号不能为空', (res) => { })
-      return false
-    }
-    if (form.realName == '') {
-      config.mytoast('真实姓名不能为空', (res) => { })
-      return false
-    }
-    if (form.age == '') {
-      config.mytoast('年龄不能为空', (res) => { })
-      return false
-    }
-
-
-    config.ajax('POST', {
-      openId: app.globalData.uid,
-      phone: this.data.phone,
-      password: form.password,
-      passwordAgain: form.passwordAgain,
-      identityNo: form.identityNo,
-      realName: form.realName,
-      age: form.age,
-      sources:'微信小程序'
-    }, config.register, (res) => {
-
-      console.log(res.data);
-      if (res.data.code == 1) {
-
-        config.mytoast('注册成功，正在跳转', (res) => { })
-
-        setTimeout(function(){
-          wx.redirectTo({
-            url: '/pages/login/login'
-          })
-        },1000)
-      }else{
-        config.mytoast(res.data.msg, (res) => { })
-      }
-    }, (res) => {
-
-    })
-
-  }
 })

@@ -9,102 +9,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    news:[],
-    hasUserInfo:false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    info:{
+      "draw":null,
+      "current":null,
+      "pageSize": null,
+      "pages": null,
+      "total": null,
+      "recordsTotal": null,
+      "recordsFiltered": null,
+      data:[]
+    },
+    height:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
-    let token = wx.getStorageSync('token') || null;
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-
-      console.log('hasUserInfo-1--', this.data.hasUserInfo);
-
-      console.log('token=1==', token);
-
-      if (!token) {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-      }
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-
-        console.log('hasUserInfo-2--', this.data.hasUserInfo);
-
-        console.log('token=2==', token);
-
-        if (this.data.hasUserInfo == false) {
-          wx.navigateTo({
-            url: '/pages/login/toloading/toloading'
-          })
-        }
-        if (!token) {
-          wx.navigateTo({
-            url: '/pages/login/login'
-          })
-        }
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        },
-      })
-      console.log('hasUserInfo-3--', this.data.hasUserInfo);
-
-      console.log('token=3==', token);
-
-      if (this.data.hasUserInfo == false) {
-        wx.navigateTo({
-          url: '/pages/login/toloading/toloading'
-        })
-      }
-
-      if (!token) {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-      }
-    }
-
-
-    timer = setTimeout(function(){
-      console.log('hasUserInfo-4--', _this.data.hasUserInfo);
-
-      if (_this.data.hasUserInfo == false) {
-        wx.navigateTo({
-          url: '/pages/login/toloading/toloading'
-        })
-      }
-      if (!token) {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-      }
-    },2000)
     
-
+    
   },
 
   /**
@@ -118,85 +41,90 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getBanner();
-    this.getNews();
+    let _this = this;
+    let token = wx.getStorageSync('token') || null;
+
+    this.setData({
+      height: wx.getSystemInfoSync().windowHeight,　　//屏幕高度
+    })
+    
+    console.log("token----");
+    console.log(token);
+    if (!token) {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }else{
+      this.getInit();
+    }
+
+   
+
+    // wx.setTabBarBadge({//这个方法的意思是，为小程序某一项的tabbar右上角添加文本
+    //   index: 3,   //代表哪个tabbar（从0开始）
+    //   text: '3'		//显示的内容
+    // })
+    // wx.removeTabBarBadge({//这个方法为移除当前tabbar右上角的文本
+    //   index: 2,		 //代表哪个tabbar（从0开始）
+    // })
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 页面下拉刷新
    */
-  onHide: function () {
-    clearTimeout(timer)
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    clearTimeout(timer);
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
+    wx.showNavigationBarLoading();
+    
+    this.getInit();
 
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  scrollBottomTab(e){
+    if (this.data.info.current < this.data.info.pages) {
+      let page = this.data.info.current + 1;
+      this.getInit(page);
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  goActivity: function () {
+  goDetail: function (e) {
+    console.log(e);
+    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../reservation/index'
+      url: `/pages/product/product?id=${id}`
     })
   },
-  goPlace:function(){
-    wx.navigateTo({
-      url: '../placeinfo/index'
-    })
-  },
-  getBanner() {
+  getInit(page = 1) {
+    let _this = this;
 
     config.ajax('POST', {
+      pageNum:page,
+      pageSize:10
+    }, config.getProject, (resp) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      let res = resp.data;
+      if (res.code == 1) {
+        res.data.data.forEach((value)=>{
+          value.createDate = value.createDate.substring(0,10)
+        })
 
-    }, config.getBanner, (res) => {
-      console.log(res.data);
+        if (page != 1) {
+          _this.data.info.data.push.apply(_this.data.info.data, res.data.data);
+          _this.data.info.current = res.data.current;
+  
+          _this.setData({
+            info: _this.data.info
+          })
+        } else {
+          _this.setData({
+            info: res.data
+          })
+        }
 
-      if (res.data.code == 1) {
-        this.setData({
-          background: res.data.data.data
-        });
+
       } else {
-        config.mytoast(res.data.msg, (res) => { })
-      }
-    }, (res) => {
-
-    })
-  },
-  getNews() {
-
-    config.ajax('POST', {
-
-    }, config.getNews, (res) => {
-
-      if (res.data.code == 1) {
-        this.setData({
-          news: res.data.data.data
-        });
-        console.log(this.data.news);
-      } else {
-        config.mytoast(res.data.msg, (res) => { })
+        config.mytoast(res.msg, (res) => { })
       }
     }, (res) => {
 

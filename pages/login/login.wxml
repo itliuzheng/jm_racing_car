@@ -1,80 +1,33 @@
 <!--pages/login/login.wxml-->
 <view class="login-bj">
-  <view class="bj"></view>
+  <image class="bj" src="/images/login/bj.png"></image>
   <view class="login-content">
-    <image class="logo" src="/images/login/login_bj.png"></image>
-
-    <view class="login-name">
-      <text class="{{ isType == 'login'?'active':''}}" bindtap="clickNav" data-nav="login">用户登录</text>
-      <text class="{{ isType == 'register'?'active':''}}" bindtap="clickNav" data-nav="register">用户注册</text>
-    </view>
+    <view class="logo">logo</view>
     <view class="form-box">
-      <view class="arrow-top {{isType == 'register'?'arrow-top-register':''}}"></view>
-      <form bindsubmit="formSubmit"  wx:if="{{isType == 'login'}}">
+      <form bindsubmit="formSubmit">
         <view class="login-form">
           <view class="input-cell">
-            <image src="/images/login/user.png"></image>
+            <image class="mobile_img" src="/images/login/mobile.png"></image>
             <input class="weui-input" placeholder-style="color:#bbbbcf" name="loginName"
-            maxlength="11" placeholder="请输入您的手机号"></input>
+            maxlength="11" placeholder="请输入用户名"></input>
           </view>
-          <view class="input-cell">
-            <image src="/images/login/password.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="password"
-            password type="text" placeholder="请输入您的账户密码" />
+          <view class="input-cell ">
+            <image class="code_img" src="/images/login/yanzhengma.png"></image>
+            <input class="weui-input no_border_t" placeholder-style="color:#bbbbcf" name="password"
+            password type="text" placeholder="请输入密码" />
           </view>
+          <view class="select-cell">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="picker">
+              {{array[index]}}
+                <image class="arrow" src="/images/login/arrow.png"></image>
+              </view>
+            </picker>
+          </view>
+
           <view class="btn-area">
-            <button formType="submit">立即登录</button>
-          </view>
-        </view>
-      </form>
-      <form bindsubmit="formSubmitRegister"  wx:else>
-        <view class="login-form">
-          <!-- <view class="input-cell">
-            <image src="/images/login/phone.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="phone"
-            maxlength="11" placeholder="请输入您的手机号"></input>
-          </view> -->
-          
-          <view class="input-cell">
-          
-            <image src="/images/login/code.png"></image>
-            <view class="weui-input fl mock_input" style="width:381rpx;">{{phone}}</view>
-            <!-- <input class="weui-input fl" style="width:381rpx;" placeholder-style="color:#bbbbcf" name="code"maxlength="6" placeholder="请输入您的手机号"></input> -->
-            <button class="code-btn" size="default" style="width:210rpx;"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
-          </view>
-          <!-- <view class="input-cell">
-            <image src="/images/login/code.png"></image>
-            <input class="weui-input fl" style="width:381rpx;" placeholder-style="color:#bbbbcf" name="code"
-            maxlength="6" placeholder="请输入验证码"></input>
-            <view class="code-btn" bindtap="sendCode">{{sms}}</view>
-          </view> -->
-          <view class="input-cell">
-            <image src="/images/login/password.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="password"
-            password type="text" placeholder="请输入您的账户密码" />
-          </view>
-          <view class="input-cell">
-            <image  src="/images/login/password.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="passwordAgain"
-            password type="text" placeholder="请重复您的账户密码" />
-          </view>
-          <view class="input-cell">
-            <image src="/images/login/user_name.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="realName"
-             type="text" placeholder="请输入您的个人姓名" />
-          </view>
-          <view class="input-cell">
-            <image src="/images/login/idCard.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="identityNo"
-             type="idcard" placeholder="请输入您的身份证号" />
-          </view>
-          <view class="input-cell">
-            <image  src="/images/login/age.png"></image>
-            <input class="weui-input" placeholder-style="color:#bbbbcf" name="age"
-             type="number" placeholder="请输入您的年龄" />
-          </view>
-          <view class="btn-area">
-            <button formType="submit">立即注册</button>
+            <image class="btn_bj" src="/images/login/button.png"></image>
+            <button formType="submit">登录</button>
           </view>
         </view>
       </form>
